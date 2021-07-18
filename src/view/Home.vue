@@ -1,33 +1,39 @@
 <template>
   <div class="home">
-    <div class="topBar">
-    </div>
+    <ToPBar/>
     <div class="homePage">
-      <div class="getStart">
+      <button class="getStart" @click="toDoc">
         GET START
-      </div>
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import route from "../route/route";
+import ToPBar from "../components/TopBar.vue"
+
 export default {
-  name: "Home"
+  name: "Home",
+  components: {ToPBar},
+  setup() {
+    let toDoc = function () {
+      route.push("doc")
+    }
+    return {
+      toDoc
+    }
+  }
 }
 </script>
 
 <style scoped>
-.getStart{
+.getStart {
   border: solid black;
   border-width: 2px 3px 2px 5px;
   max-width: 100px;
   margin-left: 40px;
   border-radius: 10px 50px 10px 50px/50px 10px 50px 10px;
-}
-.topBar {
-  box-shadow: 0 2px 0 #888888;
-  margin-bottom: 2px;
-  height: 10vh;
 }
 
 .homePage {
