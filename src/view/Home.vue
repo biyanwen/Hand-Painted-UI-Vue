@@ -33,6 +33,7 @@ export default {
   border-width: 2px 3px 2px 5px;
   max-width: 100px;
   margin-left: 40px;
+  margin-top: 100px;
   border-radius: 10px 50px 10px 50px/50px 10px 50px 10px;
 }
 

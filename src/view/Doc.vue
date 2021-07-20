@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <ToPBar/>
+    <MyIcon/>
     <button class="showAsideList" @click="asideShow = !asideShow"></button>
     <div class="main">
       <transition name="slide-fade">
@@ -18,10 +19,11 @@
 
 <script lang="ts">
 import ToPBar from "../components/TopBar.vue"
+import MyIcon from '../assets/icons/remark.svg'
 
 export default {
   name: "Doc",
-  components: {ToPBar},
+  components: {ToPBar, MyIcon},
   data: function () {
     return {
       asideShow: true
