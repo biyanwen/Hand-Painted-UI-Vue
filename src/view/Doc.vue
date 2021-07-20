@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import ToPBar from "../components/TopBar.vue"
-import MyIcon from '../assets/icons/remark.svg'
+import { VueComponent as MyIcon } from '../assets/icons/remark.svg'
 
 export default {
   name: "Doc",
