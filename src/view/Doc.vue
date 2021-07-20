@@ -1,11 +1,14 @@
 <template>
   <div class="doc">
-    <ToPBar class="topBar" />
+    <ToPBar/>
+    <div class="showAsideList" @click="asideShow = !asideShow"></div>
     <div class="main">
-      <div class="aside" v-show="asideShow">
-        <div class="asideTitle">组件列表</div>
-        <router-link class="asideText" to="/doc/switch">Switch 开关</router-link>
-      </div>
+      <transition name="slide-fade">
+        <div class="aside" v-show="asideShow">
+          <div class="asideTitle">组件列表</div>
+          <router-link class="asideText" to="/doc/switch">Switch 开关</router-link>
+        </div>
+      </transition>
       <div class="docMain">
         <router-view/>
       </div>
@@ -15,15 +18,16 @@
 
 <script lang="ts">
 import ToPBar from "../components/TopBar.vue"
-import {provide, ref} from 'vue'
 
 export default {
   name: "Doc",
   components: {ToPBar},
+  data: function () {
+    return {
+      asideShow: true
+    }
+  },
   setup() {
-    const asideShow = ref(false)
-    provide('asideShow', asideShow)
-    return {asideShow}
   }
 }
 </script>
@@ -31,19 +35,20 @@ export default {
 <style lang="scss" scoped>
 $title-margin-left: 10px;
 $text-margin-top: 10px;
-.doc {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+.showAsideList {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
-
 
 .docMain {
   position: relative;
   width: 100%;
   border: 1px solid red;
-  //position: absolute;
-  //right: 0;
+  overflow: auto;
 }
 
 .asideText {
@@ -62,9 +67,10 @@ $text-margin-top: 10px;
 }
 
 .main {
-  border: 1px solid red;
+  border: 1px solid black;
   display: flex;
   padding-left: 250px;
+  margin-top: 10vh;
 }
 
 .aside {
@@ -75,9 +81,20 @@ $text-margin-top: 10px;
   top: 0;
   left: 0;
   padding-top: 80px;
-  transition: 2s;
 }
-.topBar {
-  position: relative;
+
+// 侧边栏动画
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>

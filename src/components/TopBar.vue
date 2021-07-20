@@ -1,20 +1,13 @@
 <template>
-  <div class="topBar" @click="toggleMenu">
-    <div class="list"></div>
+  <div class="topBar">
   </div>
 </template>
 
 <script lang="ts">
-import {inject, Ref} from "vue";
 
 export default {
   name: "TopBar",
   setup() {
-    const asideShow = inject<Ref<boolean>>('asideShow')
-    const toggleMenu = () => {
-      asideShow.value = !asideShow.value
-    }
-    return {toggleMenu}
   },
   data: function () {
     return {}
@@ -32,10 +25,5 @@ export default {
   top: 0;
   left: 0;
   z-index: 10;
-}
-.list {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
 }
 </style>
