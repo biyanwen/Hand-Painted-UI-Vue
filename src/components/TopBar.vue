@@ -20,6 +20,7 @@ export default {
   box-shadow: 0 2px 0 #eeeded;
   margin-bottom: 2px;
   height: 10vh;
+  width: 100%;
   background-color: white;
   position: fixed;
   top: 0;

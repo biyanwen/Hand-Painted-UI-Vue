@@ -1,7 +1,7 @@
 <template>
   <div class="doc">
     <ToPBar/>
-    <div class="showAsideList" @click="asideShow = !asideShow"></div>
+    <button class="showAsideList" @click="asideShow = !asideShow"></button>
     <div class="main">
       <transition name="slide-fade">
         <div class="aside" v-show="asideShow">
@@ -42,6 +42,7 @@ $text-margin-top: 10px;
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 11;
 }
 
 .docMain {
