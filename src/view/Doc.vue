@@ -1,8 +1,9 @@
 <template>
   <div class="doc">
     <ToPBar/>
-    <MyIcon/>
-    <button class="showAsideList" @click="asideShow = !asideShow"></button>
+    <div class="remarkIcon" @click="asideShow = !asideShow">
+      <Remark class="remark"/>
+    </div>
     <div class="main">
       <transition name="slide-fade">
         <div class="aside" v-show="asideShow">
@@ -19,11 +20,11 @@
 
 <script lang="ts">
 import ToPBar from "../components/TopBar.vue"
-import { VueComponent as MyIcon } from '../assets/icons/remark.svg'
+import {VueComponent as Remark} from '../assets/icons/remark.svg'
 
 export default {
   name: "Doc",
-  components: {ToPBar, MyIcon},
+  components: {ToPBar, Remark},
   data: function () {
     return {
       asideShow: true
@@ -37,14 +38,25 @@ export default {
 <style lang="scss" scoped>
 $title-margin-left: 10px;
 $text-margin-top: 10px;
-.showAsideList {
-  width: 50px;
-  height: 50px;
-  background-color: red;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 11;
+.remarkIcon {
+  display: none;
+}
+
+@media (max-width : 600px) {
+  .remarkIcon {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 40px;
+    top: 10px;
+    z-index: 11;
+
+    > .remark {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 .docMain {
