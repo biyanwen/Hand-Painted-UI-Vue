@@ -11,24 +11,23 @@
 </template>
 
 <script lang="ts">
-import {ref} from 'vue'
 
 export default {
   name: "Switch",
-  setup() {
-    let onOrOff = ref(false)
+  props: {onOrOff: Boolean},
+  setup(props, context) {
     let switchStatus = () => {
-      onOrOff.value = !onOrOff.value
+      context.emit("update:onOrOff", !props.onOrOff)
     }
     let switchWord = () => {
       let word = document.getElementsByClassName('word')[0]
-      if (onOrOff.value) {
+      if (props.onOrOff) {
         word.innerHTML = 'on'
       } else {
         word.innerHTML = 'off'
       }
     }
-    return {switchWord, onOrOff, switchStatus}
+    return {switchWord, switchStatus}
   }
 }
 </script>

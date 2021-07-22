@@ -8,7 +8,7 @@
       <transition name="slide-fade">
         <div class="aside" v-show="asideShow">
           <div class="asideTitle">组件列表</div>
-          <router-link class="asideText" to="/doc/switch">Switch 开关</router-link>
+          <router-link class="asideText" to="/doc/switchDemo">Switch 开关</router-link>
         </div>
       </transition>
       <div class="docMain">
