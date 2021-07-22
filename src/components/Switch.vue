@@ -1,8 +1,8 @@
 <template>
   <div class="div">
-    <div class="divButton">
-      <div class="word">off</div>
-      <div class="divSpan">
+    <div :class="{divButtonOffColor: !onOrOff,divButtonOnColor:onOrOff}" @click="switchWord" class="divButton ">
+      <div :class="{wordOff: !onOrOff,wordOn:onOrOff}" class="word">off</div>
+      <div @click="switchStatus" :class="{divSpanOffLeft:!onOrOff,divSpanOnLeft:onOrOff}" class="divSpan">
         <div class="line"></div>
         <div class="lines"></div>
       </div>
@@ -11,8 +11,25 @@
 </template>
 
 <script lang="ts">
+import {ref} from 'vue'
+
 export default {
-  name: "Switch"
+  name: "Switch",
+  setup() {
+    let onOrOff = ref(false)
+    let switchStatus = () => {
+      onOrOff.value = !onOrOff.value
+    }
+    let switchWord = () => {
+      let word = document.getElementsByClassName('word')[0]
+      if (onOrOff.value) {
+        word.innerHTML = 'on'
+      } else {
+        word.innerHTML = 'off'
+      }
+    }
+    return {switchWord, onOrOff, switchStatus}
+  }
 }
 </script>
 
@@ -21,7 +38,6 @@ export default {
   height: 100vh;
 
   > .divButton {
-    background-color: #d4d2d2;
     border: solid #929090;
     width: 50px;
     height: 20px;
@@ -29,21 +45,20 @@ export default {
     border-radius: 27px 50px / 42px 28px;
     position: relative;
 
-    >.word{
-      font-family: 'HandPainted',serif;
-      color: black;
+    > .word {
+      font-family: 'HandPainted', serif;
       top: 2px;
       position: absolute;
-      left: 23px;
     }
+
     > .divSpan {
       position: absolute;
       background-color: white;
       width: 20px;
       height: 19px;
-      left: 3px;
       border-width: 1px 2px 2px 2px;
       border-radius: 50px;
+      transition: 0.5s;
 
       > .line {
         border: 2px solid #929090;
@@ -65,6 +80,33 @@ export default {
       }
     }
   }
+}
+
+.wordOff {
+  left: 23px;
+  color: black;
+}
+
+.wordOn {
+  left: 3px;
+  color: white;
+  font-size: 17px;
+}
+
+.divSpanOnLeft {
+  left: 28px;
+}
+
+.divSpanOffLeft {
+  left: 3px;
+}
+
+.divButtonOnColor {
+  background-color: #62b9d7;
+}
+
+.divButtonOffColor {
+  background-color: #d4d2d2;
 }
 
 </style>
