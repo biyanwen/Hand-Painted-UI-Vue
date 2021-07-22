@@ -1,10 +1,10 @@
 <template>
-  <div class="div">
-    <div :class="{divButtonOffColor: !onOrOff,divButtonOnColor:onOrOff}" @click="switchWord" class="divButton ">
-      <div :class="{wordOff: !onOrOff,wordOn:onOrOff}" class="word">off</div>
-      <div @click="switchStatus" :class="{divSpanOffLeft:!onOrOff,divSpanOnLeft:onOrOff}" class="divSpan">
-        <div class="line"></div>
-        <div class="lines"></div>
+  <div class="hand-div">
+    <div :class="{divButtonOffColor: !onOrOff,divButtonOnColor:onOrOff}" @click="switchWord" class="hand-divButton ">
+      <div :class="{wordOff: !onOrOff,wordOn:onOrOff}" class="hand-word">off</div>
+      <div @click="switchStatus" :class="{divSpanOffLeft:!onOrOff,divSpanOnLeft:onOrOff}" class="hand-divSpan">
+        <div class="hand-line"></div>
+        <div class="hand-lineAid"></div>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
       context.emit("update:onOrOff", !props.onOrOff)
     }
     let switchWord = () => {
-      let word = document.getElementsByClassName('word')[0]
+      let word = document.getElementsByClassName('hand-word')[0]
       if (props.onOrOff) {
         word.innerHTML = 'on'
       } else {
@@ -33,10 +33,10 @@ export default {
 </script>
 
 <style lang="scss" >
-.div {
+.hand-div {
   height: 100vh;
 
-  > .divButton {
+  > .hand-divButton {
     border: solid #929090;
     width: 50px;
     height: 20px;
@@ -44,13 +44,13 @@ export default {
     border-radius: 27px 50px / 42px 28px;
     position: relative;
 
-    > .word {
+    > .hand-word {
       font-family: 'HandPainted', serif;
       top: 2px;
       position: absolute;
     }
 
-    > .divSpan {
+    > .hand-divSpan {
       position: absolute;
       background-color: white;
       width: 20px;
@@ -59,7 +59,7 @@ export default {
       border-radius: 50px;
       transition: 0.5s;
 
-      > .line {
+      > .hand-line {
         border: 2px solid #929090;
         width: 10px;
         height: 10px;
@@ -69,7 +69,7 @@ export default {
         position: absolute;
       }
 
-      > .lines {
+      > .hand-lineAid {
         background-color: #fff;
         height: 10px;
         top: 6px;
