@@ -9,6 +9,7 @@
         <div class="aside" v-show="asideShow">
           <div class="asideTitle">组件列表</div>
           <router-link class="asideText" to="/doc/switchDemo">Switch 开关</router-link>
+          <router-link class="asideText" to="/doc/buttonDemo">Button 按钮</router-link>
         </div>
       </transition>
       <div class="docMain">
@@ -42,7 +43,7 @@ $text-margin-top: 10px;
   display: none;
 }
 
-@media (max-width : 600px) {
+@media (max-width: 600px) {
   .remarkIcon {
     display: block;
     width: 50px;

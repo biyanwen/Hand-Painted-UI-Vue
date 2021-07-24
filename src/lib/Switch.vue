@@ -38,7 +38,6 @@ export default {
   height: 100vh;
 
   > .hand-divButton {
-    border: solid #929090;
     width: 50px;
     height: 20px;
     border-width: 2px 3px 2px 4px;
@@ -102,11 +101,13 @@ export default {
 }
 
 .handDivButtonOnColor {
-  background-color: #62b9d7;
+  background-color: #a2cef6;
+  border: solid #0071de;
 }
 
 .handDivButtonOffColor {
   background-color: #d4d2d2;
+  border: solid #929090;
 }
 
 </style>
