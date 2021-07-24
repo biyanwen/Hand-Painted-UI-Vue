@@ -1,8 +1,9 @@
 <template>
   <div class="hand-div">
-    <div :class="{divButtonOffColor: !onOrOff,divButtonOnColor:onOrOff}" @click="switchWord" class="hand-divButton ">
-      <div :class="{wordOff: !onOrOff,wordOn:onOrOff}" class="hand-word">off</div>
-      <div @click="switchStatus" :class="{divSpanOffLeft:!onOrOff,divSpanOnLeft:onOrOff}" class="hand-divSpan">
+    <div :class="{handDivButtonOffColor: !onOrOff,handDivButtonOnColor:onOrOff}" @click="switchWord"
+         class="hand-divButton ">
+      <div :class="{handWordOff: !onOrOff,handWordOn:onOrOff}" class="hand-word">off</div>
+      <div @click="switchStatus" :class="{handDivSpanOffLeft:!onOrOff,handDivSpanOnLeft:onOrOff}" class="hand-divSpan">
         <div class="hand-line"></div>
         <div class="hand-lineAid"></div>
       </div>
@@ -32,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .hand-div {
   height: 100vh;
 
@@ -46,7 +47,7 @@ export default {
 
     > .hand-word {
       font-family: 'HandPainted', serif;
-      top: 2px;
+      top: 1px;
       position: absolute;
     }
 
@@ -81,30 +82,30 @@ export default {
   }
 }
 
-.wordOff {
+.handWordOff {
   left: 23px;
   color: black;
 }
 
-.wordOn {
+.handWordOn {
   left: 3px;
   color: white;
   font-size: 17px;
 }
 
-.divSpanOnLeft {
+.handDivSpanOnLeft {
   left: 28px;
 }
 
-.divSpanOffLeft {
+.handDivSpanOffLeft {
   left: 3px;
 }
 
-.divButtonOnColor {
+.handDivButtonOnColor {
   background-color: #62b9d7;
 }
 
-.divButtonOffColor {
+.handDivButtonOffColor {
   background-color: #d4d2d2;
 }
 
