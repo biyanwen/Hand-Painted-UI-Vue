@@ -10,6 +10,7 @@
           <div class="asideTitle">组件列表</div>
           <router-link class="asideText" to="/doc/switchDemo">Switch 开关</router-link>
           <router-link class="asideText" to="/doc/buttonDemo">Button 按钮</router-link>
+          <router-link class="asideText" to="/doc/dialogDemo">Dialog 对话框</router-link>
         </div>
       </transition>
       <div class="docMain">
@@ -43,27 +44,9 @@ $text-margin-top: 10px;
   display: none;
 }
 
-@media (max-width: 600px) {
-  .remarkIcon {
-    display: block;
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    left: 40px;
-    top: 10px;
-    z-index: 11;
-
-    > .remark {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 .docMain {
   position: relative;
   width: 100%;
-  border: 1px solid red;
   overflow: auto;
 }
 
@@ -97,6 +80,8 @@ $text-margin-top: 10px;
   top: 0;
   left: 0;
   padding-top: 80px;
+  z-index: 1;
+  background-color: #fff;
 }
 
 // 侧边栏动画
@@ -112,5 +97,26 @@ $text-margin-top: 10px;
 .slide-fade-leave-to {
   transform: translateX(20px);
   opacity: 0;
+}
+
+
+@media (max-width: 600px) {
+  .remarkIcon {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 40px;
+    top: 10px;
+    z-index: 11;
+
+    > .remark {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .main {
+    padding-left: 0;
+  }
 }
 </style>
