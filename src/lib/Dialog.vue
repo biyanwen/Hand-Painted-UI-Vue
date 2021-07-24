@@ -1,31 +1,56 @@
 <template>
   <div class="hand-dialog-div">
-    <Button class="hand-dialog-button">
+    <Button @click="modifyVisible" class="hand-dialog-button">
       <slot/>
     </Button>
-    <div v-if="visible">
-      <div class="hand-dialog-backdrop"></div>
-    </div>
-    <div class="hand-dialog-frame">
-      <div class="hand-dialog-title">title</div>
-      <div class="hand-dialog-context">hand-dialog-context</div>
-      <Button class="hand-dialog-ok">ok</Button>
-      <Button class="hand-dialog-no">no</Button>
-    </div>
+    <transition name="hand-dialog-show">
+      <div v-if="visible">
+        <div class="hand-dialog-backdrop"></div>
+        <div class="hand-dialog-frame">
+          <div class="hand-dialog-close" @click="modifyVisible">
+            <Close class="hand-dialog-close-svg"/>
+          </div>
+          <div class="hand-dialog-title">title</div>
+          <div class="hand-dialog-context">hand-dialog-context</div>
+          <Button class="hand-dialog-ok" @click="modifyVisible">ok</Button>
+          <Button class="hand-dialog-no" @click="modifyVisible">no</Button>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
+import {VueComponent as Close} from '../assets/icons/close.svg'
 
 export default {
   name: "Dialog",
-  components: {Button},
-  props: {visible: {type: Boolean, default: false}}
+  components: {Button, Close},
+  props: {visible: {type: Boolean, default: false}},
+  setup(props, context) {
+    const modifyVisible = () => {
+      context.emit('update:visible', !props.visible)
+    }
+    return {modifyVisible}
+  }
 }
 </script>
 
 <style lang="scss">
+.hand-dialog-close {
+  width: 50px;
+  position: absolute;
+  top: 10px;
+  left: 85%;
+  height: 50px;
+
+  > .hand-dialog-close-svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .hand-dialog-frame {
   font-family: 'HandPainted', serif;
   border: solid #848282;
@@ -83,5 +108,15 @@ export default {
   width: 100vw;
   height: 100vh;
   opacity: 0.2;
+}
+
+.hand-dialog-show-enter-active,
+.hand-dialog-show-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.hand-dialog-show-enter-from,
+.hand-dialog-show-leave-to {
+  opacity: 0;
 }
 </style>

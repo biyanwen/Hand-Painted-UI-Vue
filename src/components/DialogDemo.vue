@@ -1,15 +1,20 @@
 <template>
   <div class="dialogDemo">
-    <Dialog visible>Open Dialog</Dialog>
+    <Dialog v-model:visible="visible">Open Dialog</Dialog>
   </div>
 </template>
 
 <script lang="ts">
 import Dialog from '../lib/Dialog.vue'
+import {ref} from "vue";
 
 export default {
   name: "DialogDemo",
-  components: {Dialog}
+  components: {Dialog},
+  setup() {
+    const visible = ref(false)
+    return {visible}
+  }
 }
 </script>
 
