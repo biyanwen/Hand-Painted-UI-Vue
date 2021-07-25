@@ -1,12 +1,9 @@
 <template>
-  <div class="hand-dialog-div">
-    <Button @click="modifyVisible" class="hand-dialog-button">
-      <slot name="button">Open Dialog</slot>
-    </Button>
-    <transition name="hand-dialog-show">
-      <div v-if="visible">
-        <div class="hand-dialog-backdrop"></div>
-        <div class="hand-dialog-frame">
+  <teleport to="body">
+    <div class="hand-dialog-div">
+      <div class="hand-dialog-backdrop" v-if="visible"></div>
+      <transition name="hand-dialog-show">
+        <div class="hand-dialog-frame" v-if="visible">
           <div class="hand-dialog-close" @click="modifyVisible">
             <Close class="hand-dialog-close-svg"/>
           </div>
@@ -23,9 +20,9 @@
             <slot name="no">no</slot>
           </Button>
         </div>
-      </div>
-    </transition>
-  </div>
+      </transition>
+    </div>
+  </teleport>
 </template>
 
 <script lang="ts">
@@ -82,9 +79,14 @@ export default {
   border-radius: 10px 50px/50px 10px;
   min-width: 400px;
   min-height: 250px;
-  position: absolute;
-  top: 20vh;
-  left: 20vw;
+  //position: absolute;
+  //top: 20vh;
+  //left: 20vw;
+
+  z-index: 11;
+  position: fixed;
+  left: 50%;
+  top: 30%;
 
   > .hand-dialog-title {
     font-size: 30px;
@@ -125,12 +127,15 @@ export default {
 }
 
 .hand-dialog-backdrop {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 1px solid red;
   background-color: #a7a5a5;
-  width: 100vw;
-  height: 100vh;
   opacity: 0.2;
+  z-index: 10;
 }
 
 .hand-dialog-show-enter-active,

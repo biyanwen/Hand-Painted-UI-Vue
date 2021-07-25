@@ -1,11 +1,11 @@
 <template>
   <div class="dialogDemo">
+    <Button @click="modifyVisible" class="dialogButton">
+      Open Dialog
+    </Button>
     <Dialog v-model:visible="visible"
             :ok="ok"
             :no="no">
-      <template v-slot:button>
-        <h1>Open Dialog</h1>
-      </template>
       <template v-slot:title>
         This is title
       </template>
@@ -17,7 +17,6 @@
       </template>
       <template v-slot:no>
         no
-
       </template>
     </Dialog>
   </div>
@@ -25,11 +24,12 @@
 
 <script lang="ts">
 import Dialog from '../lib/Dialog.vue'
+import Button from "../lib/Button.vue";
 import {ref} from "vue";
 
 export default {
   name: "DialogDemo",
-  components: {Dialog},
+  components: {Dialog, Button},
   setup() {
     const visible = ref(false)
     const ok = () => {
@@ -38,13 +38,20 @@ export default {
     const no = () => {
       alert("这里是no")
     }
-    return {visible, ok, no}
+    const modifyVisible = () => {
+      visible.value = !visible.value
+    }
+    return {visible, ok, no, modifyVisible}
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.dialogButton{
+  position: absolute;
+}
 .dialogDemo {
   height: 100vh;
+  position: relative;
 }
 </style>
