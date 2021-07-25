@@ -17,6 +17,7 @@
       </template>
       <template v-slot:no>
         no
+
       </template>
     </Dialog>
   </div>
