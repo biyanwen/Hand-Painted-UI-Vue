@@ -1,6 +1,9 @@
 <template>
   <div class="dialogDemo">
-    <Dialog v-model:visible="visible">Open Dialog</Dialog>
+    <Dialog v-model:visible="visible"
+            :ok="ok"
+            :no="no">Open Dialog
+    </Dialog>
   </div>
 </template>
 
@@ -13,7 +16,13 @@ export default {
   components: {Dialog},
   setup() {
     const visible = ref(false)
-    return {visible}
+    const ok = () => {
+      alert("这里是ok")
+    }
+    const no = () => {
+      alert("这里是no")
+    }
+    return {visible, ok, no}
   }
 }
 </script>

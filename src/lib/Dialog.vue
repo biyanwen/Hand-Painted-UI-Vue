@@ -12,8 +12,8 @@
           </div>
           <div class="hand-dialog-title">title</div>
           <div class="hand-dialog-context">hand-dialog-context</div>
-          <Button class="hand-dialog-ok" @click="modifyVisible">ok</Button>
-          <Button class="hand-dialog-no" @click="modifyVisible">no</Button>
+          <Button class="hand-dialog-ok" @click="doOk">ok</Button>
+          <Button class="hand-dialog-no" @click="doNo">no</Button>
         </div>
       </div>
     </transition>
@@ -27,12 +27,27 @@ import {VueComponent as Close} from '../assets/icons/close.svg'
 export default {
   name: "Dialog",
   components: {Button, Close},
-  props: {visible: {type: Boolean, default: false}},
+  props: {
+    visible: {type: Boolean, default: false},
+    ok: {type: Function},
+    no: {type: Function}
+  },
   setup(props, context) {
     const modifyVisible = () => {
       context.emit('update:visible', !props.visible)
     }
-    return {modifyVisible}
+    const doOk = () => {
+      doFunction(props.ok)
+    }
+    const doNo = () => {
+      doFunction(props.no)
+    }
+    const doFunction = (fun: Function) => {
+      if (fun?.() !== false) {
+        modifyVisible()
+      }
+    }
+    return {modifyVisible, doOk, doNo}
   }
 }
 </script>
