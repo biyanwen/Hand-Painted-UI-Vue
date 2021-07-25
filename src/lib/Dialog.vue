@@ -79,10 +79,6 @@ export default {
   border-radius: 10px 50px/50px 10px;
   min-width: 400px;
   min-height: 250px;
-  //position: absolute;
-  //top: 20vh;
-  //left: 20vw;
-
   z-index: 11;
   position: fixed;
   left: 50%;
