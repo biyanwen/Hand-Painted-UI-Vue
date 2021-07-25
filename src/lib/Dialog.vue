@@ -1,7 +1,7 @@
 <template>
   <div class="hand-dialog-div">
     <Button @click="modifyVisible" class="hand-dialog-button">
-      <slot/>
+      <slot name="button">Open Dialog</slot>
     </Button>
     <transition name="hand-dialog-show">
       <div v-if="visible">
@@ -10,10 +10,18 @@
           <div class="hand-dialog-close" @click="modifyVisible">
             <Close class="hand-dialog-close-svg"/>
           </div>
-          <div class="hand-dialog-title">title</div>
-          <div class="hand-dialog-context">hand-dialog-context</div>
-          <Button class="hand-dialog-ok" @click="doOk">ok</Button>
-          <Button class="hand-dialog-no" @click="doNo">no</Button>
+          <div class="hand-dialog-title">
+            <slot name="title">title</slot>
+          </div>
+          <div class="hand-dialog-context">
+            <slot name="context">This is a message</slot>
+          </div>
+          <Button class="hand-dialog-ok" @click="doOk">
+            <slot name="ok">ok</slot>
+          </Button>
+          <Button class="hand-dialog-no" @click="doNo">
+            <slot name="no">no</slot>
+          </Button>
         </div>
       </div>
     </transition>

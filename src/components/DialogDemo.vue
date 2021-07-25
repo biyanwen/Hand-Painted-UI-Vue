@@ -2,7 +2,22 @@
   <div class="dialogDemo">
     <Dialog v-model:visible="visible"
             :ok="ok"
-            :no="no">Open Dialog
+            :no="no">
+      <template v-slot:button>
+        <h1>Open Dialog</h1>
+      </template>
+      <template v-slot:title>
+        This is title
+      </template>
+      <template v-slot:context>
+        This is a message
+      </template>
+      <template v-slot:ok>
+        ok
+      </template>
+      <template v-slot:no>
+        no
+      </template>
     </Dialog>
   </div>
 </template>
