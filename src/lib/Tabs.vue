@@ -1,10 +1,12 @@
 <template>
   <div class="hand-tabs-title-father">
     <div class="hand-tabs-title-div">
-      <Button class="hand-tabs-title hand-tabs-title-background" v-for="title in titles">{{ title }}</Button>
+      <Button class="hand-tabs-title hand-tabs-title-background " @click="checkTitle"
+              :id="`hand-title-select-${title}`" v-for="title in titles">{{ title }}
+      </Button>
     </div>
     <div class="hand-tabs-title-context ">
-      <component :is="current"></component>
+      <component :is="getCurrent" :key="getCurrent.props.title"></component>
     </div>
   </div>
 </template>
@@ -12,6 +14,7 @@
 <script lang="ts">
 import Tab from '../lib/Tab.vue'
 import Button from "./Button.vue";
+import {computed, onMounted, ref, watch, watchEffect} from "vue";
 
 export default {
   name: "Tabs",
@@ -29,11 +32,31 @@ export default {
       }
     })
 
-    const current = defaults.filter(item => {
-      return item.props.title === props.select
-    })[0]
+    let getCurrent = computed(() => {
+      return defaults.filter(item => {
+        return item.props.title === props.select
+      })[0]
+    })
     const titles = defaults.map(item => item.props.title)
-    return {current, defaults, titles}
+
+    onMounted(() => {
+      watchEffect(() => {
+        let id = 'hand-title-select-' + props.select
+        let backgroundClass = 'hand-tabs-title-background'
+
+        let titleSelectElement = document.getElementById(id)
+        for (let child of titleSelectElement.parentElement.children) {
+          child.classList.remove(backgroundClass)
+        }
+
+        titleSelectElement.classList.add(backgroundClass)
+      })
+    })
+
+    const checkTitle = (e) => {
+      context.emit('update:select', e.target.innerText)
+    }
+    return {getCurrent, defaults, titles, checkTitle}
   }
 }
 </script>

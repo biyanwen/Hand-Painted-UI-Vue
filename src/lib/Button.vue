@@ -31,7 +31,7 @@ export default {
   min-width: 50px;
   height: 40px;
   opacity: 1;
-  transition: 0.5s;
+  transition: 250ms;
 }
 
 .hand-loading {

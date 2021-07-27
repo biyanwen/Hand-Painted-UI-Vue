@@ -1,8 +1,8 @@
 <template>
   <div class="tabsDemo">
-    <Tabs :select="select">
-      <Tab title="Tab1">this is message one</Tab>
-      <Tab title="Tab2">this is message two</Tab>
+    <Tabs v-model:select="select">
+      <Tab title="Tab1">this is message for Tab1</Tab>
+      <Tab title="Tab2">this is message for Tab2</Tab>
     </Tabs>
   </div>
 </template>
