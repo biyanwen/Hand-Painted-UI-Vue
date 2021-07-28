@@ -128,7 +128,6 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 1px solid red;
   background-color: #a7a5a5;
   opacity: 0.2;
   z-index: 10;
