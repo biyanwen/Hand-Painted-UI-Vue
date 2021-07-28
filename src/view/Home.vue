@@ -77,8 +77,6 @@ export default {
       justify-content: center;
       flex-wrap: wrap;
       width: 300px;
-      //position: absolute;
-      //left: 1100px;
 
       > .ts {
         font-size: 40px;
@@ -95,8 +93,6 @@ export default {
       justify-content: center;
       flex-wrap: wrap;
       width: 300px;
-      //position: absolute;
-      //left: 600px;
 
       > .versatile {
         font-size: 40px;
@@ -113,8 +109,6 @@ export default {
       justify-content: center;
       flex-wrap: wrap;
       width: 300px;
-      //position: absolute;
-      //left: 100px;
 
       > .approachable {
         font-size: 40px;
