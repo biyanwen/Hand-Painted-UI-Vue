@@ -67,7 +67,6 @@ $text-margin-top: 10px;
 }
 
 .main {
-  border: 1px solid black;
   display: flex;
   padding-left: 250px;
   margin-top: 10vh;
@@ -107,7 +106,7 @@ $text-margin-top: 10px;
     width: 50px;
     height: 50px;
     position: fixed;
-    left: 40px;
+    left: 100px;
     top: 10px;
     z-index: 11;
 

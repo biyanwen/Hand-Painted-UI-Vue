@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!--    <ToPBar/>-->
     <div class="homePage">
       <div class="vuePng">
         <img src="../assets/png/Vue.png" alt="vue"/>

@@ -1,20 +1,24 @@
 <template>
   <div class="topBar">
     <div class="topBarVuePng">
-      <img src="../assets/png/Vue.png">
+      <img @click="toHome" src="../assets/png/Vue.png">
     </div>
+    <a href="https://github.com/biyanwen/Hand-Painted-UI-Vue" class="githubA">Github</a>
   </div>
 </template>
 
 <script lang="ts">
 
+import route from "../route/route";
+
 export default {
   name: "TopBar",
   setup() {
+    const toHome = () => {
+      route.push('/')
+    }
+    return {toHome}
   },
-  data: function () {
-    return {}
-  }
 }
 </script>
 
@@ -30,6 +34,18 @@ export default {
   top: 0;
   left: 0;
   z-index: 10;
+
+  > .githubA {
+    font-family: 'HandPainted', serif;
+    z-index: 11;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 80px;
+    top: 17px;
+    font-size: 35px;
+    color: #4e4d4d;
+  }
 
   > .topBarVuePng {
     width: 65px;
