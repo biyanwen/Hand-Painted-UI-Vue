@@ -41,6 +41,9 @@ export default {
 <style lang="scss" scoped>
 $title-margin-left: 10px;
 $text-margin-top: 10px;
+.router-link-active{
+  text-decoration: underline;
+}
 .remarkIcon {
   display: none;
 }
