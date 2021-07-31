@@ -1,3 +1,6 @@
+<demo>
+disabled
+</demo>
 <template>
   <Switch v-model:onOrOff="onOrOff" disabled/>
 </template>

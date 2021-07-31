@@ -8,10 +8,10 @@
           <SwitchDemo1/>
         </div>
         <div class="demo-actions">
-          <Button>show code</Button>
+          <Button @click="showCode1">show code</Button>
         </div>
-        <div class="demo-code">
-          <pre>&lt;Switch v-model:onOrOff="onOrOff" /&gt;</pre>
+        <div class="demo-code" id="demo-code-switch1">
+          <pre>{{ SwitchDemo1.__sourceCode }}</pre>
         </div>
       </div>
       <div class="demo">
@@ -20,10 +20,10 @@
           <SwitchDemo2/>
         </div>
         <div class="demo-actions">
-          <Button>show code</Button>
+          <Button @click="showCode2">show code</Button>
         </div>
-        <div class="demo-code">
-          <pre>&lt;Switch v-model:value="bool" disabled /&gt;</pre>
+        <div class="demo-code" id="demo-code-switch2">
+          <pre>{{ SwitchDemo2.__sourceCode }}</pre>
         </div>
       </div>
     </div>
@@ -37,7 +37,26 @@ import Button from "../lib/Button.vue";
 
 export default {
   name: "SwitchDemo",
-  components: {Button, SwitchDemo1, SwitchDemo2}
+  components: {Button, SwitchDemo1, SwitchDemo2},
+  setup() {
+    const showCode1 = () => {
+      let showCodeOne = document.getElementById('demo-code-switch1');
+      if (showCodeOne.style.display === 'none') {
+        showCodeOne.style.display = "block"
+      } else {
+        showCodeOne.style.display = 'none'
+      }
+    }
+    const showCode2 = () => {
+      let showCodeOne = document.getElementById('demo-code-switch2');
+      if (showCodeOne.style.display === 'none') {
+        showCodeOne.style.display = "block"
+      } else {
+        showCodeOne.style.display = 'none'
+      }
+    }
+    return {SwitchDemo1, SwitchDemo2, showCode1, showCode2}
+  }
 }
 </script>
 
@@ -55,6 +74,7 @@ $border-width: 2px 3px 3px 2px;
   > h1 {
     font-size: 40px;
     width: 100%;
+    text-align: center;
   }
 
   &-demoDiv {
@@ -71,8 +91,10 @@ $border-width: 2px 3px 3px 2px;
   border-width: $border-width;
   border-radius: $border-radius;
   margin: 16px 0 32px;
+  min-width: 28vw;
 
   > h2 {
+    text-align: center;
     font-size: 20px;
     padding: 8px 16px;
     border-bottom: solid $border-color;
@@ -87,6 +109,7 @@ $border-width: 2px 3px 3px 2px;
   }
 
   &-actions {
+    text-align: center;
     padding: 8px 16px;
     border-top: solid $border-color;
     border-radius: $border-radius;
@@ -100,6 +123,8 @@ $border-width: 2px 3px 3px 2px;
     border-width: $border-width;
 
     > pre {
+      word-wrap: break-word;
+      white-space: pre-wrap;
       line-height: 1.1;
       font-family: Consolas, 'Courier New', Courier, monospace;
       margin: 0;

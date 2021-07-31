@@ -1,15 +1,15 @@
 <template>
-  <article class="markdown-body" v-html="info"></article>
+  <article class="markdown-body"></article>
+  <div>这里是 info</div>
+  <div id="setting">
+  </div>
 </template>
 
 <script lang="ts">
-import info from '../md/info.md'
+
 
 export default {
   name: "Info",
-  data() {
-    return {info}
-  }
 }
 </script>
 

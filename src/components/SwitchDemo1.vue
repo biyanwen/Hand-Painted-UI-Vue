@@ -1,3 +1,6 @@
+<demo>
+Basic
+</demo>
 <template>
   <Switch v-model:onOrOff="onOrOff"/>
 </template>
@@ -15,7 +18,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>
