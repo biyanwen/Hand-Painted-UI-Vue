@@ -39,7 +39,7 @@ export default {
   components: {ToPBar, Button},
   setup() {
     let toDoc = () => {
-      route.push("doc")
+      route.push("doc/info")
     }
     let toGithub = () => {
       window.location.href = "https://github.com/biyanwen/Hand-Painted-UI-Vue"

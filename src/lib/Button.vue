@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss">
 .handButton {
-  border: 2px solid #747272;
+  border: 2px solid #a5a4a4;
   border-radius: 10px 50px 10px 50px/ 50px 10px 50px 10px;
   background-color: #fff;
   font-family: 'HandPainted', serif;

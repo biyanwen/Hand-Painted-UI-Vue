@@ -17,11 +17,19 @@ export default {
   name: "Switch",
   props: {onOrOff: Boolean},
   setup(props, context) {
-    let switchStatus = () => {
+    const hasDisabled = (e) => {
+      return e.currentTarget.parentElement.parentElement
+          .attributes.getNamedItem("disabled") !== null
+    }
+    let switchStatus = (e) => {
+      if (hasDisabled(e)) {
+        e.stopPropagation()
+        return
+      }
       context.emit("update:onOrOff", !props.onOrOff)
     }
-    let switchWord = () => {
-      let word = document.getElementsByClassName('hand-word')[0]
+    let switchWord = (e) => {
+      let word = e.currentTarget.childNodes[0];
       if (props.onOrOff) {
         word.innerHTML = 'on'
       } else {
@@ -35,7 +43,6 @@ export default {
 
 <style lang="scss">
 .hand-div {
-  height: 100vh;
 
   > .hand-divButton {
     width: 50px;

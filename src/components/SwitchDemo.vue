@@ -1,27 +1,109 @@
 <template>
-  <div class="SwitchDemo">
-    <Switch v-model:onOrOff="onOrOff"/>
+  <div class="switchDemo">
+    <h1>Examples</h1>
+    <div class="switchDemo-demoDiv">
+      <div class="demo">
+        <h2>Basic</h2>
+        <div class="demo-component">
+          <SwitchDemo1/>
+        </div>
+        <div class="demo-actions">
+          <Button>show code</Button>
+        </div>
+        <div class="demo-code">
+          <pre>&lt;Switch v-model:onOrOff="onOrOff" /&gt;</pre>
+        </div>
+      </div>
+      <div class="demo">
+        <h2>disabled </h2>
+        <div class="demo-component">
+          <SwitchDemo2/>
+        </div>
+        <div class="demo-actions">
+          <Button>show code</Button>
+        </div>
+        <div class="demo-code">
+          <pre>&lt;Switch v-model:value="bool" disabled /&gt;</pre>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import Switch from '../lib/Switch.vue'
-import {ref} from "vue";
+import SwitchDemo1 from '../components/SwitchDemo1.vue'
+import SwitchDemo2 from '../components/SwitchDemo2.vue'
+import Button from "../lib/Button.vue";
 
 export default {
   name: "SwitchDemo",
-  components: {Switch},
-  setup() {
-    const onOrOff = ref(false)
-    return {onOrOff}
-  }
+  components: {Button, SwitchDemo1, SwitchDemo2}
 }
 </script>
 
-<style lang="scss" scoped>
-.SwitchDemo {
+<style lang="scss">
+$border-color: #d9d9d9;
+$border-radius: 10px 50px/50px 10px;
+$border-width: 2px 3px 3px 2px;
+.switchDemo {
+  width: 95%;
   display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
   justify-content: center;
-  margin-top: 30px;
+
+  > h1 {
+    font-size: 40px;
+    width: 100%;
+  }
+
+  &-demoDiv {
+    margin-top: 40px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.demo {
+  border: solid $border-color;
+  border-width: $border-width;
+  border-radius: $border-radius;
+  margin: 16px 0 32px;
+
+  > h2 {
+    font-size: 20px;
+    padding: 8px 16px;
+    border-bottom: solid $border-color;
+    border-radius: $border-radius;
+    border-width: $border-width;
+  }
+
+  &-component {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-actions {
+    padding: 8px 16px;
+    border-top: solid $border-color;
+    border-radius: $border-radius;
+    border-width: $border-width;
+  }
+
+  &-code {
+    padding: 8px 16px;
+    border-top: $border-color;
+    border-radius: $border-radius;
+    border-width: $border-width;
+
+    > pre {
+      line-height: 1.1;
+      font-family: Consolas, 'Courier New', Courier, monospace;
+      margin: 0;
+    }
+  }
 }
 </style>
