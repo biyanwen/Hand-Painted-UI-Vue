@@ -1,57 +1,35 @@
 <template>
   <div class="dialogDemo">
-    <Button @click="modifyVisible" class="dialogButton">
-      Open Dialog
-    </Button>
-    <Dialog v-model:visible="visible"
-            :ok="ok"
-            :no="no">
-      <template v-slot:title>
-        This is title
-      </template>
-      <template v-slot:context>
-        This is a message
-      </template>
-      <template v-slot:ok>
-        ok
-      </template>
-      <template v-slot:no>
-        no
-      </template>
-    </Dialog>
+    <h1>Examples</h1>
+    <Demo :component="Dialog1Demo"></Demo>
   </div>
 </template>
 
 <script lang="ts">
-import Dialog from '../lib/Dialog.vue'
-import Button from "../lib/Button.vue";
-import {ref} from "vue";
+import Demo from './Demo.vue'
+import Dialog1Demo from '../components/Dialog1Demo.vue'
 
 export default {
   name: "DialogDemo",
-  components: {Dialog, Button},
+  components: {Dialog1Demo, Demo},
   setup() {
-    const visible = ref(false)
-    const ok = () => {
-      alert("这里是ok")
-    }
-    const no = () => {
-      alert("这里是no")
-    }
-    const modifyVisible = () => {
-      visible.value = !visible.value
-    }
-    return {visible, ok, no, modifyVisible}
+    return {Dialog1Demo}
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.dialogButton{
-  position: absolute;
-}
 .dialogDemo {
-  height: 100vh;
-  position: relative;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  justify-content: center;
+
+  > h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

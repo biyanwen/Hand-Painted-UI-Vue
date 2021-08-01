@@ -1,29 +1,36 @@
 <template>
   <div class="tabsDemo">
-    <Tabs v-model:select="select">
-      <Tab title="Tab1">this is message for Tab1</Tab>
-      <Tab title="Tab2">this is message for Tab2</Tab>
-    </Tabs>
+    <h1>Examples</h1>
+    <Demo :component="Tabs1Demo"></Demo>
   </div>
 </template>
 
 <script lang="ts">
-import Tabs from '../lib/Tabs.vue'
-import Tab from '../lib/Tab.vue'
-import {ref} from "vue";
+import Demo from './Demo.vue'
+import Tabs1Demo from '../components/Tabs1Demo.vue'
 
 export default {
   name: "TabsDemo",
-  components: {Tabs, Tab},
+  components: {Demo, Tabs1Demo},
   setup() {
-    const select = ref<String>("Tab1")
-    return {select}
+    return {Demo, Tabs1Demo}
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
 .tabsDemo {
-  height: 100vh;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  justify-content: center;
+
+  > h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

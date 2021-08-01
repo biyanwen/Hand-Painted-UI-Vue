@@ -36,9 +36,10 @@ export default {
 $border-color: #d9d9d9;
 $border-radius: 10px 50px/50px 10px;
 $border-width: 2px 3px 3px 2px;
-.switchDemo-demoDiv{
+.switchDemo-demoDiv {
   padding: 40px;
 }
+
 .demo {
   border: solid $border-color;
   border-width: $border-width;

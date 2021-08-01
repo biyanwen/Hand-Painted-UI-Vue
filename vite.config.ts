@@ -25,9 +25,4 @@ module.exports = {
       }`.trim()
         }
     },
-    optimizeDeps: {
-        include: [
-            'codemirror/'
-        ]
-    }
 };

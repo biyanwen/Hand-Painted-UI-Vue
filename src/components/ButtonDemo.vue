@@ -1,76 +1,44 @@
 <template>
   <div class="buttonDemo">
-    <h1>示例一</h1>
-    <div>
-      <Button>default button</Button>
-      <Button theme="primary">primary button
-      </Button>
-      <Button theme="dashed">dashed button
-      </Button>
-      <Button theme="text">text button
-      </Button>
-      <Button theme="link">link button
-      </Button>
-    </div>
-    <h1>示例二</h1>
-    <div>
-      <Button level="danger">danger button
-      </Button>
-      <Button level="warning">warning button
-      </Button>
-      <Button level="success">success button
-      </Button>
-    </div>
-    <h1>示例三</h1>
-    <div>
-      <Button level="success" size="small">small
-      </Button>
-      <Button level="success">default
-      </Button>
-      <Button level="success" size="big">big
-      </Button>
-    </div>
-    <h1>示例四</h1>
-    <div>
-      <Button disabled>default button</Button>
-      <Button theme="primary" disabled>primary button
-      </Button>
-      <Button theme="dashed" disabled>dashed button
-      </Button>
-      <Button theme="text" disabled>text button
-      </Button>
-      <Button theme="link" disabled>link button
-      </Button>
-    </div>
-    <h1>示例五</h1>
-    <div>
-      <Button loading>default button</Button>
-      <Button theme="primary" loading>primary button
-      </Button>
-      <Button theme="dashed" loading>dashed button
-      </Button>
-      <Button theme="text" loading>text button
-      </Button>
-      <Button theme="link" loading>link button
-      </Button>
-    </div>
+    <h1>Examples</h1>
+    <Demo :component="Button1Demo"></Demo>
+    <Demo :component="Button2Demo"></Demo>
+    <Demo :component="Button3Demo"></Demo>
+    <Demo :component="Button4Demo"></Demo>
+    <Demo :component="Button5Demo"></Demo>
   </div>
 </template>
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
+import Demo from './Demo.vue'
+import Button1Demo from '../components/Button1Demo.vue'
+import Button2Demo from '../components/Button2Demo.vue'
+import Button3Demo from '../components/Button3Demo.vue'
+import Button4Demo from '../components/Button4Demo.vue'
+import Button5Demo from '../components/Button5Demo.vue'
 
 export default {
   name: "ButtonDemo",
-  components: {Button},
+  components: {Button, Demo, Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo},
+  setup() {
+    return {Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo}
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .buttonDemo {
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  height: 100vh;
+  margin-left: 20px;
+  justify-content: center;
+
+  > h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

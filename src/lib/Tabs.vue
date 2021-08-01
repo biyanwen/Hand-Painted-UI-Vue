@@ -64,6 +64,7 @@ export default {
 <style lang="scss">
 .hand-tabs-title-father {
   font-family: 'HandPainted', serif;
+  width: 100%;
 
   > .hand-tabs-title-div {
     display: flex;

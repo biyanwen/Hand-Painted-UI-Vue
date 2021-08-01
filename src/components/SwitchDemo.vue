@@ -9,7 +9,7 @@
 <script lang="ts">
 import SwitchDemo1 from '../components/SwitchDemo1.vue'
 import SwitchDemo2 from '../components/SwitchDemo2.vue'
-import Demo from '../components/Demo.vue'
+import Demo from './Demo.vue'
 
 import Button from "../lib/Button.vue";
 import {ref} from "vue";
