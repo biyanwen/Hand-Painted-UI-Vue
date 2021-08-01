@@ -31,6 +31,9 @@ const router = createRouter({
             path: "info",
             component: Info
         }]
+    }, {
+        path: '/:pathMatch(.*)',
+        redirect: '/'
     }]
 });
 
