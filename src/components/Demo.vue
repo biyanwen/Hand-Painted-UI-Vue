@@ -6,7 +6,8 @@
         <component :is="component"/>
       </div>
       <div class="demo-actions">
-        <Button @click="codeVisible = !codeVisible">show code</Button>
+        <Button @click="codeVisible = !codeVisible" v-show="!codeVisible">show code</Button>
+        <Button @click="codeVisible = !codeVisible" v-show="codeVisible">hide code</Button>
       </div>
       <div class="demo-code" id="demo-code-switch1" v-show="codeVisible">
         <pre>{{ component.__sourceCode }}</pre>

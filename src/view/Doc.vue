@@ -8,10 +8,10 @@
       <transition name="slide-fade">
         <div class="aside" v-show="asideShow">
           <div class="asideTitle">组件列表</div>
-          <router-link class="asideText" to="/doc/switchDemo">Switch 开关</router-link>
-          <router-link class="asideText" to="/doc/buttonDemo">Button 按钮</router-link>
-          <router-link class="asideText" to="/doc/dialogDemo">Dialog 对话框</router-link>
-          <router-link class="asideText" to="/doc/tabsDemo">Tabs 标签页</router-link>
+          <router-link class="asideText" to="/doc/switchDemo">Switch</router-link>
+          <router-link class="asideText" to="/doc/buttonDemo">Button</router-link>
+          <router-link class="asideText" to="/doc/dialogDemo">Dialog</router-link>
+          <router-link class="asideText" to="/doc/tabsDemo">Tabs</router-link>
         </div>
       </transition>
       <div class="docMain">

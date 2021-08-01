@@ -133,13 +133,6 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/codemirror@^5.60.2":
-  version "5.60.2"
-  resolved "https://registry.nlark.com/@types/codemirror/download/@types/codemirror-5.60.2.tgz#1f8b604964efb4fa2f5a6d6d8c5656f93a050d8a"
-  integrity sha1-H4tgSWTvtPovWm1tjFZW+ToFDYo=
-  dependencies:
-    "@types/tern" "*"
-
 "@types/connect@*":
   version "3.4.35"
   resolved "https://registry.nlark.com/@types/connect/download/@types/connect-3.4.35.tgz#5fcf6ae445e4021d1fc2219a4873cc73a3bb2ad1"
@@ -283,13 +276,6 @@
   dependencies:
     "@types/mime" "^1"
     "@types/node" "*"
-
-"@types/tern@*":
-  version "0.23.4"
-  resolved "https://registry.nlark.com/@types/tern/download/@types/tern-0.23.4.tgz#03926eb13dbeaf3ae0d390caf706b2643a0127fb"
-  integrity sha1-A5JusT2+rzrg05DK9wayZDoBJ/s=
-  dependencies:
-    "@types/estree" "*"
 
 "@vue/compiler-core@3.1.4":
   version "3.1.4"
@@ -657,11 +643,6 @@ coa@^2.0.2:
     chalk "^2.4.1"
     q "^1.1.2"
 
-codemirror@^5.41.0, codemirror@^5.62.2:
-  version "5.62.2"
-  resolved "https://registry.nlark.com/codemirror/download/codemirror-5.62.2.tgz#bce6d19c9829e6e788f83886d48ecf5c1e106e65"
-  integrity sha1-vObRnJgp5ueI+DiG1I7PXB4QbmU=
-
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npm.taobao.org/color-convert/download/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -880,11 +861,6 @@ destroy@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/destroy/download/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
-
-diff-match-patch@^1.0.0:
-  version "1.0.5"
-  resolved "https://registry.npm.taobao.org/diff-match-patch/download/diff-match-patch-1.0.5.tgz#abb584d5f10cd1196dfc55aa03701592ae3f7b37"
-  integrity sha1-q7WE1fEM0Rlt/FWqA3AVkq4/ezc=
 
 dir-glob@^3.0.1:
   version "3.0.1"
@@ -2573,14 +2549,6 @@ vite@^1.0.0-rc.1:
     source-map "^0.7.3"
     vue "^3.0.3"
     ws "^7.3.1"
-
-vue-codemirror@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.npm.taobao.org/vue-codemirror/download/vue-codemirror-4.0.6.tgz#b786bb80d8d762a93aab8e46f79a81006f0437c4"
-  integrity sha1-t4a7gNjXYqk6q45G95qBAG8EN8Q=
-  dependencies:
-    codemirror "^5.41.0"
-    diff-match-patch "^1.0.0"
 
 vue-router@4.0.0-beta.3:
   version "4.0.0-beta.3"

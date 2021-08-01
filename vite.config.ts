@@ -6,6 +6,8 @@ const fs = require('fs')
 import {baseParse} from '@vue/compiler-core'
 
 module.exports = {
+    base: './',
+    assetsDir: 'assets',
     plugins: [
         svgPlugin(),
         md()
