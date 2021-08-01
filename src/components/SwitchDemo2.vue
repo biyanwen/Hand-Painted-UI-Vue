@@ -1,5 +1,5 @@
 <demo>
-disabled
+Disabled
 </demo>
 <template>
   <Switch v-model:onOrOff="onOrOff" disabled/>
@@ -18,7 +18,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>
