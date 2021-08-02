@@ -7,7 +7,7 @@
     <div class="main">
       <transition name="slide-fade">
         <div class="aside" v-show="asideShow">
-          <div class="asideTitle">组件列表</div>
+          <div class="asideTitle">Components</div>
           <router-link class="asideText" to="/doc/switchDemo">Switch</router-link>
           <router-link class="asideText" to="/doc/buttonDemo">Button</router-link>
           <router-link class="asideText" to="/doc/dialogDemo">Dialog</router-link>

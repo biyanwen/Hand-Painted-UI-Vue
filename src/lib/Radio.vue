@@ -1,5 +1,6 @@
 <template>
-  <div class="hand-radio-div" @click="changeSelect">
+  <div ref="handRadioDiv" class="hand-radio-div" @click="changeSelect">
+    <div v-show="disabled" class="hand-radio-screen"></div>
     <div class="hand-radio-circle">
       <div class="hand-radio-circle2">
         <div v-show="selectVisible" class="hand-radio-circle-select"></div>
@@ -20,10 +21,12 @@ export default {
   components: {Button},
   props: {
     select: String,
-    label: String
+    label: String,
   },
   setup(props, context) {
     let selectVisible = ref(false)
+    let handRadioDiv = ref(null)
+    let disabled = ref(false)
     onMounted(() => {
       watchEffect(() => {
         if (props.select === props.label) {
@@ -32,19 +35,39 @@ export default {
           selectVisible.value = false
         }
       })
+
+      watchEffect(() => {
+        disabled.value = handRadioDiv.value.attributes?.disabled !== undefined;
+      })
     })
 
-    const changeSelect = () => {
+
+    const changeSelect = (e) => {
+      if (disabled.value) {
+        e.stopPropagation()
+        return
+      }
       context.emit('update:select', props.label)
     }
-    return {selectVisible, changeSelect}
+    return {selectVisible, changeSelect, handRadioDiv, disabled}
   }
 }
 </script>
 
 <style lang="scss">
+$width: 90px;
+$height: 25px;
+.hand-radio-screen {
+  position: absolute;
+  min-width: $width;
+  height: $height;
+  z-index: 2;
+  cursor: not-allowed;
+}
+
 .hand-radio-div {
-  width: 90px;
+  padding-right: 10px;
+  min-width: 90px;
   display: flex;
   align-content: center;
 
