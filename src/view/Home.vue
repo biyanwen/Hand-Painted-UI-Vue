@@ -56,6 +56,7 @@ export default {
 .home {
   position: relative;
   font-family: 'HandPainted', serif;
+  text-align: center;
 }
 
 

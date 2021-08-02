@@ -12,6 +12,7 @@
           <router-link class="asideText" to="/doc/buttonDemo">Button</router-link>
           <router-link class="asideText" to="/doc/dialogDemo">Dialog</router-link>
           <router-link class="asideText" to="/doc/tabsDemo">Tabs</router-link>
+          <router-link class="asideText" to="/doc/radioDemo">Radio</router-link>
         </div>
       </transition>
       <div class="docMain">
@@ -41,9 +42,10 @@ export default {
 <style lang="scss" scoped>
 $title-margin-left: 10px;
 $text-margin-top: 10px;
-.router-link-active{
+.router-link-active {
   text-decoration: underline;
 }
+
 .remarkIcon {
   display: none;
 }
