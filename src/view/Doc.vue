@@ -13,6 +13,7 @@
           <router-link class="asideText" to="/doc/dialogDemo">Dialog</router-link>
           <router-link class="asideText" to="/doc/tabsDemo">Tabs</router-link>
           <router-link class="asideText" to="/doc/radioDemo">Radio</router-link>
+          <router-link class="asideText" to="/doc/calendarDemo">Calendar</router-link>
         </div>
       </transition>
       <div class="docMain">

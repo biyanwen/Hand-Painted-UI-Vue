@@ -27,6 +27,7 @@ export default {
   background-color: #fff;
   font-family: 'HandPainted', serif;
   padding: 10px;
+  margin-left: 5px;
   font-size: 18px;
   min-width: 50px;
   height: 40px;
