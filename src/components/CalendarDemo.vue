@@ -1,21 +1,36 @@
 <template>
-  <Calendar v-model="date"></Calendar>
+  <div class="calendarDemo">
+    <h1>Examples</h1>
+    <Demo :component="Calendar1Demo"></Demo>
+  </div>
 </template>
 
 <script lang="ts">
-import Calendar from '../lib/Calendar.vue'
-import {ref, watchEffect} from "vue";
+import Calendar1Demo from "../components/Calendar1Demo.vue";
+import Demo from "../components/Demo.vue"
 
 export default {
   name: "CalendarDemo",
-  components: {Calendar},
+  components: {Calendar1Demo, Demo},
   setup() {
-    let date = ref(new Date())
-    return {date}
+    return {Calendar1Demo}
   }
 }
 </script>
-
 <style lang="scss" scoped>
+
+.calendarDemo {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  justify-content: center;
+
+  > h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+  }
+}
 
 </style>

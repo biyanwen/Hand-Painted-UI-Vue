@@ -164,12 +164,13 @@ export default {
     justify-content: space-between;
 
     > div {
-      width: 40px;
-      height: 55px;
+      width: 47px;
+      height: 43px;
       line-height: 55px;
       display: flex;
       justify-content: center;
       font-size: 20px;
+      transition: 250ms;
     }
 
     > div:hover:not(.hand-calender-select) {
