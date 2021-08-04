@@ -16,20 +16,40 @@
       <div>Sat</div>
       <div>Sun</div>
     </div>
-    <div ref="handCalenderDate" class="hand-calender-dates">
-      <div class="hand-calender-select" v-for="date in getDates" key="date">{{ date === 0 ? '' : date }}</div>
+    <div @click="changeMarkDate" ref="handCalenderDate" class="hand-calender-dates">
+      <div v-for="date in getDates" key="date"> {{ date === 0 ? '' : date }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {computed, ref} from "vue";
+import {computed, onMounted, ref, watchEffect} from "vue";
 
 export default {
   name: "Calendar",
-  setup() {
-    let currentDate = ref(new Date())
+  props: {modelValue: Date},
+  setup(props, context) {
+    let currentDate = ref(props.modelValue)
     let handCalenderDate = ref(null)
+
+    onMounted(() => {
+      watchEffect(() => {
+        let markDate = props.modelValue.getDate()
+        for (let i = 0; i < handCalenderDate.value.children.length; i++) {
+          let item = handCalenderDate.value.children[i]
+          if (currentDate.value.getMonth() === props.modelValue.getMonth()) {
+            if (item.innerHTML === markDate.toString()) {
+              // console.log(item.classList)
+              item.classList.add('hand-calender-select')
+            } else {
+              item.classList.remove('hand-calender-select')
+            }
+          } else {
+            item.classList.remove('hand-calender-select')
+          }
+        }
+      })
+    })
 
     let getPlusMonth = (plus: Number) => {
       let date = currentDate.value
@@ -70,22 +90,28 @@ export default {
         }
         return fillInArray
       }
-      let date = new Date(markDate.getFullYear(), markDate.getMonth(), 0)
+      let date = new Date(markDate.getFullYear(), markDate.getMonth() + 1, 0)
       let currentDates = []
       for (let i = 1; i <= date.getDate(); i++) {
         currentDates.push(i)
       }
-      markDate.setDate(1)
-      let tmpDates = getFillInArray(markDate.getDay()).concat(currentDates)
+      date.setDate(1)
+      let tmpDates = getFillInArray(date.getDay()).concat(currentDates)
       let endFillArray = getFillInArray(43 - tmpDates.length)
       return tmpDates.concat(endFillArray)
     })
+
+    let changeMarkDate = (e) => {
+      let date = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth(), Number(e.target.innerHTML))
+      context.emit('update:modelValue', date)
+    }
     return {
       getDates,
       currentDate,
       getPlusMonth,
       getPlusYear,
-      handCalenderDate
+      handCalenderDate,
+      changeMarkDate
     }
   }
 }
@@ -138,13 +164,12 @@ export default {
     justify-content: space-between;
 
     > div {
-      width: 41px;
-      height: 39px;
+      width: 40px;
+      height: 55px;
+      line-height: 55px;
       display: flex;
       justify-content: center;
-      padding-top: 7px;
       font-size: 20px;
-      padding-left: 3px;
     }
 
     > div:hover:not(.hand-calender-select) {
@@ -154,9 +179,12 @@ export default {
     }
   }
 }
-.hand-calender-select{
+
+.hand-calender-select {
   border: solid red;
   border-radius: 50px;
-  border-width: 2px 3px 3px 1.5px;
+  border-width: 2px 3px 3px 1px;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 </style>
