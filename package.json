@@ -1,6 +1,6 @@
 {
-  "name": "Hand-Painted-UI-Vue",
-  "version": "0.0.0",
+  "name": "hand-painted-ui-vue",
+  "version": "0.0.1",
   "files": [
     "dist/lib/*"
   ],
