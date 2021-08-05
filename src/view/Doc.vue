@@ -2,7 +2,7 @@
   <div class="doc">
     <ToPBar/>
     <div class="remarkIcon" @click="asideShow = !asideShow">
-      <Remark class="remark"/>
+      <img class="remark" :src="Remark" alt="open"/>
     </div>
     <div class="main">
       <transition name="slide-fade">
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import ToPBar from "../components/TopBar.vue"
-import {VueComponent as Remark} from '../assets/icons/remark.svg'
+import Remark from '../assets/icons/remark.svg'
 
 export default {
   name: "Doc",
@@ -36,6 +36,7 @@ export default {
     }
   },
   setup() {
+    return {Remark}
   }
 }
 </script>

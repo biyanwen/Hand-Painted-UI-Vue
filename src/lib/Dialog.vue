@@ -5,7 +5,7 @@
       <transition name="hand-dialog-show">
         <div class="hand-dialog-frame" v-if="visible">
           <div class="hand-dialog-close" @click="modifyVisible">
-            <Close class="hand-dialog-close-svg"/>
+            <img class="hand-dialog-close-svg" :src="Close" alt="open"/>
           </div>
           <div class="hand-dialog-title">
             <slot name="title">title</slot>
@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
-import {VueComponent as Close} from '../assets/icons/close.svg'
+import Close from '../assets/icons/close.svg'
 
 export default {
   name: "Dialog",
@@ -47,12 +47,12 @@ export default {
     const doNo = () => {
       doFunction(props.no)
     }
-    const doFunction = (fun: Function) => {
+    const doFunction = (fun) => {
       if (fun?.() !== false) {
         modifyVisible()
       }
     }
-    return {modifyVisible, doOk, doNo}
+    return {modifyVisible, doOk, doNo, Close}
   }
 }
 </script>

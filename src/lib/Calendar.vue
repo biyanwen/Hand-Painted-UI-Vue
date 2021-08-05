@@ -51,7 +51,7 @@ export default {
       })
     })
 
-    let getPlusMonth = (plus: Number) => {
+    let getPlusMonth = (plus) => {
       let date = currentDate.value
       let month = date.getMonth()
       let year = date.getFullYear()
@@ -66,7 +66,7 @@ export default {
       }
       currentDate.value = new Date(year, month)
     }
-    let getPlusYear = (plus: Number) => {
+    let getPlusYear = (plus) => {
       let date = currentDate.value
       let year = date.getFullYear()
       year += plus
@@ -76,7 +76,7 @@ export default {
     let getDates = computed(() => {
       let markDate = currentDate.value
 
-      let getFillInArray = (num: Number): Array<Number> => {
+      let getFillInArray = (num) => {
         let end
         if (num === 0) {
           end = 6
