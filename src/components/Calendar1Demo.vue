@@ -7,7 +7,7 @@ Basic
 
 <script lang="ts">
 import Calendar from '../lib/Calendar.vue'
-import {ref, watchEffect} from "vue";
+import {ref} from "vue";
 
 export default {
   name: "Calendar1Demo",
