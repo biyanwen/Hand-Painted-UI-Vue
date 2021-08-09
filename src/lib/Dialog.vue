@@ -29,6 +29,16 @@
 import Button from '../lib/Button.vue'
 import Close from '../assets/icons/close.svg'
 
+interface DialogProps {
+  visible: Boolean,
+  ok: Function,
+  no: Function
+}
+
+interface DialogContext {
+  emit: (event: string, ...args: unknown[]) => void
+}
+
 export default {
   name: "Dialog",
   components: {Button, Close},
@@ -37,7 +47,7 @@ export default {
     ok: {type: Function},
     no: {type: Function}
   },
-  setup(props, context) {
+  setup(props: DialogProps, context: DialogContext) {
     const modifyVisible = () => {
       context.emit('update:visible', !props.visible)
     }
@@ -47,7 +57,7 @@ export default {
     const doNo = () => {
       doFunction(props.no)
     }
-    const doFunction = (fun) => {
+    const doFunction = (fun: Function) => {
       if (fun?.() !== false) {
         modifyVisible()
       }

@@ -23,6 +23,9 @@ export default {
     }],
     plugins: [
         scss({include: /\.scss$/, sass: dartSass}),
+        image({
+            include: /\.svg$/,
+        }),
         vue({
             include: /\.vue$/,
         }),
@@ -31,6 +34,5 @@ export default {
             minify: process.env.NODE_ENV === 'production',
             target: 'es2015'
         }),
-        image()
     ],
 }

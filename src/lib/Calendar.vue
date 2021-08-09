@@ -25,18 +25,26 @@
 <script lang="ts">
 import {computed, onMounted, ref, watchEffect} from "vue";
 
+interface CalendarProps {
+  modelValue: Date
+}
+
+interface CalendarContext {
+  emit: (event: string, ...args: unknown[]) => void
+}
+
 export default {
   name: "Calendar",
   props: {modelValue: Date},
-  setup(props, context) {
+  setup(props: CalendarProps, context: CalendarContext) {
     let currentDate = ref(props.modelValue)
     let handCalenderDate = ref(null)
 
     onMounted(() => {
       watchEffect(() => {
         let markDate = props.modelValue.getDate()
-        for (let i = 0; i < handCalenderDate.value.children.length; i++) {
-          let item = handCalenderDate.value.children[i]
+        for (let i = 0; i < (handCalenderDate.value as any)?.children.length; i++) {
+          let item = (handCalenderDate.value as any)?.children[i]
           if (currentDate.value.getMonth() === props.modelValue.getMonth()) {
             if (item.innerHTML === markDate.toString()) {
               // console.log(item.classList)
@@ -51,7 +59,7 @@ export default {
       })
     })
 
-    let getPlusMonth = (plus) => {
+    let getPlusMonth = (plus: number) => {
       let date = currentDate.value
       let month = date.getMonth()
       let year = date.getFullYear()
@@ -66,7 +74,7 @@ export default {
       }
       currentDate.value = new Date(year, month)
     }
-    let getPlusYear = (plus) => {
+    let getPlusYear = (plus: number) => {
       let date = currentDate.value
       let year = date.getFullYear()
       year += plus
@@ -76,8 +84,8 @@ export default {
     let getDates = computed(() => {
       let markDate = currentDate.value
 
-      let getFillInArray = (num) => {
-        let end
+      let getFillInArray = (num: number) => {
+        let end: number
         if (num === 0) {
           end = 6
         } else {
@@ -101,8 +109,8 @@ export default {
       return tmpDates.concat(endFillArray)
     })
 
-    let changeMarkDate = (e) => {
-      let date = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth(), Number(e.target.innerHTML))
+    let changeMarkDate = (e: Event) => {
+      let date = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth(), Number((e.target as any)?.innerHTML))
       context.emit('update:modelValue', date)
     }
     return {

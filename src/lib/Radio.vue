@@ -13,8 +13,17 @@
 </template>
 
 <script lang="ts">
-import Button from "./Button.vue";
+import Button from '../lib/Button.vue'
 import {onMounted, ref, watchEffect} from "vue";
+
+interface RadioPreps {
+  select: String,
+  label: String
+}
+
+interface RadioContext {
+  emit: (event: string, ...args: unknown[]) => void
+}
 
 export default {
   name: "Radio",
@@ -23,7 +32,7 @@ export default {
     select: String,
     label: String,
   },
-  setup(props, context) {
+  setup(props: RadioPreps, context: RadioContext) {
     let selectVisible = ref(false)
     let handRadioDiv = ref(null)
     let disabled = ref(false)
@@ -37,12 +46,12 @@ export default {
       })
 
       watchEffect(() => {
-        disabled.value = handRadioDiv.value.attributes?.disabled !== undefined;
+        disabled.value = (handRadioDiv.value as any)?.attributes?.disabled !== undefined;
       })
     })
 
 
-    const changeSelect = (e) => {
+    const changeSelect = (e: Event) => {
       if (disabled.value) {
         e.stopPropagation()
         return

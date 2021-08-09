@@ -12,24 +12,31 @@
 </template>
 
 <script lang="ts">
+interface SwitchProps {
+  onOrOff: Boolean
+}
+
+interface SwitchContext {
+  emit: (event: string, ...args: unknown[]) => void
+}
 
 export default {
   name: "Switch",
   props: {onOrOff: Boolean},
-  setup(props, context) {
-    const hasDisabled = (e) => {
-      return e.currentTarget.parentElement.parentElement
+  setup(props: SwitchProps, context: SwitchContext) {
+    const hasDisabled = (e: Event) => {
+      return (e.currentTarget as any)?.parentElement.parentElement
           .attributes.getNamedItem("disabled") !== null
     }
-    let switchStatus = (e) => {
+    let switchStatus = (e: Event) => {
       if (hasDisabled(e)) {
         e.stopPropagation()
         return
       }
       context.emit("update:onOrOff", !props.onOrOff)
     }
-    let switchWord = (e) => {
-      let word = e.currentTarget.childNodes[0];
+    let switchWord = (e: Event) => {
+      let word = (e.currentTarget as any)?.childNodes[0];
       if (props.onOrOff) {
         word.innerHTML = 'on'
       } else {

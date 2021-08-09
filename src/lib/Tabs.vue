@@ -13,31 +13,40 @@
 
 <script lang="ts">
 import Tab from '../lib/Tab.vue'
-import Button from "./Button.vue";
-import {computed, onMounted, ref, watch, watchEffect} from "vue";
+import Button from "./Button.vue"
+import {computed, onMounted, watchEffect} from "vue";
+
+interface TabsProps {
+  select: String
+}
+
+interface TabsContext {
+  emit: (event: string, ...args: unknown[]) => void,
+  slots: {
+    default: () => []
+  }
+}
 
 export default {
   name: "Tabs",
   components: {Button},
   props: {
-    select: {
-      type: String
-    }
+    select: String
   },
-  setup(props, context) {
+  setup(props: TabsProps, context: TabsContext) {
     const defaults = context.slots.default()
     defaults.forEach((tag) => {
-      if (tag.type !== Tab) {
+      if ((tag as any).type !== Tab) {
         throw new Error('Tabs 子标签必须是 Tab')
       }
     })
 
     let getCurrent = computed(() => {
-      return defaults.filter(item => {
-        return item.props.title === props.select
+      return defaults.filter((item) => {
+        return (item as any).props.title === props.select
       })[0]
     })
-    const titles = defaults.map(item => item.props.title)
+    const titles = defaults.map(item => (item as any).props.title)
 
     onMounted(() => {
       watchEffect(() => {
@@ -45,16 +54,19 @@ export default {
         let backgroundClass = 'hand-tabs-title-background'
 
         let titleSelectElement = document.getElementById(id)
-        for (let child of titleSelectElement.parentElement.children) {
-          child.classList.remove(backgroundClass)
+        for (let i = 0; i < (titleSelectElement?.parentElement?.children.length as any); i++) {
+          titleSelectElement?.parentElement?.children[i].classList.remove(backgroundClass)
         }
+        // for (let child of titleSelectElement?.parentElement.children) {
+        //   child.classList.remove(backgroundClass)
+        // }
 
-        titleSelectElement.classList.add(backgroundClass)
+        titleSelectElement?.classList.add(backgroundClass)
       })
     })
 
-    const checkTitle = (e) => {
-      context.emit('update:select', e.target.innerText)
+    const checkTitle = (e: Event) => {
+      context.emit('update:select', (e.target as any)?.innerText)
     }
     return {getCurrent, defaults, titles, checkTitle}
   }
