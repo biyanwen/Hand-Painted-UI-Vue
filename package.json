@@ -1,10 +1,11 @@
 {
   "name": "hand-painted-ui-vue",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "dist/lib/*"
   ],
   "main": "dist/lib/handPainted.js",
+  "types": "src/lib/index.d.ts",
   "module": "dist/lib/handPainted.esm.js",
   "scripts": {
     "dev": "vite",
