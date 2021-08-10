@@ -5,6 +5,9 @@
     "strict": false,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "declaration": true
-  }
+    "declaration": true,
+    "declarationDir": "/"
+  },
+  "include": ["src/lib"],
+  "exclude": ["node_modules", "dist", "example"]
 }

@@ -5,7 +5,7 @@
     "dist/lib/*"
   ],
   "main": "dist/lib/handPainted.js",
-  "types": "src/lib/index.d.ts",
+  "types": "dist/lib/index.d.ts",
   "module": "dist/lib/handPainted.esm.js",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,9 @@
     "github-markdown-css": "^4.0.0",
     "marked": "1.1.1",
     "prismjs": "1.21.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
     "vue": "3.0.0",
     "vue-router": "4.0.0-beta.3"
   },
@@ -33,11 +35,14 @@
     "rollup-plugin-terser": "7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-vue": "6.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.30.0",
     "sass": "1.32.11",
     "ts-morph": "^11.0.3",
     "vite": "^1.0.0-rc.1",
     "vite-plugin-svg": "^0.7.0",
     "vite-svg-loader": "^2.1.0",
-    "vue-dts-gen": "^0.2.3"
+    "vue": "3.0.0",
+    "vue-router": "4.0.0-beta.3"
   }
 }
