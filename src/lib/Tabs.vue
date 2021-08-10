@@ -14,18 +14,8 @@
 <script lang="ts">
 import Tab from '../lib/Tab.vue'
 import Button from "./Button.vue"
-import {computed, onMounted, watchEffect} from "vue";
-
-interface TabsProps {
-  select: String
-}
-
-interface TabsContext {
-  emit: (event: string, ...args: unknown[]) => void,
-  slots: {
-    default: () => []
-  }
-}
+import {computed, onMounted, SetupContext, watchEffect} from "vue";
+import {TabsProps} from "./Tabs";
 
 export default {
   name: "Tabs",
@@ -33,7 +23,7 @@ export default {
   props: {
     select: String
   },
-  setup(props: TabsProps, context: TabsContext) {
+  setup(props: TabsProps, context: SetupContext) {
     const defaults = context.slots.default()
     defaults.forEach((tag) => {
       if ((tag as any).type !== Tab) {

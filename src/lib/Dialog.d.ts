@@ -1,11 +1,9 @@
+import {SetupContext} from "vue";
+
 interface DialogProps {
     visible: Boolean;
     ok: Function;
     no: Function;
-}
-
-interface DialogContext {
-    emit: (event: string, ...args: unknown[]) => void;
 }
 
 declare const Dialog: {
@@ -26,11 +24,11 @@ declare const Dialog: {
             type: FunctionConstructor;
         };
     };
-    setup(props: DialogProps, context: DialogContext): {
+    setup(props: DialogProps, context: SetupContext): {
         modifyVisible: () => void;
         doOk: () => void;
         doNo: () => void;
         Close: any;
     };
 };
-export default Dialog;
+export {DialogProps, Dialog}

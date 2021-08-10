@@ -12,18 +12,13 @@
 </template>
 
 <script lang="ts">
-interface SwitchProps {
-  onOrOff: Boolean
-}
-
-interface SwitchContext {
-  emit: (event: string, ...args: unknown[]) => void
-}
+import {SwitchProps} from './Switch.d.ts'
+import {SetupContext} from "vue";
 
 export default {
   name: "Switch",
   props: {onOrOff: Boolean},
-  setup(props: SwitchProps, context: SwitchContext) {
+  setup(props: SwitchProps, context: SetupContext) {
     const hasDisabled = (e: Event) => {
       return (e.currentTarget as any)?.parentElement.parentElement
           .attributes.getNamedItem("disabled") !== null

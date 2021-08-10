@@ -1,9 +1,7 @@
+import {SetupContext} from "vue";
+
 interface CalendarProps {
     modelValue: Date;
-}
-
-interface CalendarContext {
-    emit: (event: string, ...args: unknown[]) => void;
 }
 
 declare const Calendar: {
@@ -11,7 +9,7 @@ declare const Calendar: {
     props: {
         modelValue: DateConstructor;
     };
-    setup(props: CalendarProps, context: CalendarContext): {
+    setup(props: CalendarProps, context: SetupContext): {
         getDates: import("vue").ComputedRef<number[]>;
         currentDate: import("vue").Ref<{
             toString: () => string;
@@ -81,4 +79,4 @@ declare const Calendar: {
         changeMarkDate: (e: Event) => void;
     };
 };
-export default Calendar;
+export {Calendar, CalendarProps}

@@ -4,6 +4,8 @@ import scss from 'rollup-plugin-scss'
 import dartSass from 'sass';
 import {terser} from "rollup-plugin-terser"
 import image from '@rollup/plugin-image';
+import rollupTypescript from 'rollup-plugin-typescript'
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
     input: 'src/lib/index.ts',
@@ -34,5 +36,7 @@ export default {
             minify: process.env.NODE_ENV === 'production',
             target: 'es2015'
         }),
+        rollupTypescript(),
+        commonjs(),
     ],
 }

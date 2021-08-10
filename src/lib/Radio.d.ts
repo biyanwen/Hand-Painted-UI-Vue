@@ -1,11 +1,11 @@
-interface RadioPreps {
+import {SetupContext} from "vue";
+
+interface RadioProps {
     select: String;
     label: String;
 }
-interface RadioContext {
-    emit: (event: string, ...args: unknown[]) => void;
-}
-declare const _default: {
+
+declare const Radio: {
     name: string;
     components: {
         Button: any;
@@ -14,11 +14,11 @@ declare const _default: {
         select: StringConstructor;
         label: StringConstructor;
     };
-    setup(props: RadioPreps, context: RadioContext): {
+    setup(props: RadioProps, context: SetupContext): {
         selectVisible: import("vue").Ref<boolean>;
         changeSelect: (e: Event) => void;
         handRadioDiv: import("vue").Ref<null>;
         disabled: import("vue").Ref<boolean>;
     };
 };
-export default _default;
+export {Radio, RadioProps}

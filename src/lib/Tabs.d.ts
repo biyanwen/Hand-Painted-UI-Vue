@@ -1,12 +1,7 @@
+import {SetupContext} from "vue";
+
 interface TabsProps {
     select: String;
-}
-
-interface TabsContext {
-    emit: (event: string, ...args: unknown[]) => void;
-    slots: {
-        default: () => [];
-    };
 }
 
 declare const Tabs: {
@@ -17,11 +12,11 @@ declare const Tabs: {
     props: {
         select: StringConstructor;
     };
-    setup(props: TabsProps, context: TabsContext): {
+    setup(props: TabsProps, context: SetupContext): {
         getCurrent: import("vue").ComputedRef<never>;
         defaults: [];
         titles: any[];
         checkTitle: (e: Event) => void;
     };
 };
-export default Tabs;
+export {Tabs, TabsProps} ;

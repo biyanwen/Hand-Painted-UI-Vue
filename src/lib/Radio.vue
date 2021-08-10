@@ -14,16 +14,8 @@
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
-import {onMounted, ref, watchEffect} from "vue";
-
-interface RadioPreps {
-  select: String,
-  label: String
-}
-
-interface RadioContext {
-  emit: (event: string, ...args: unknown[]) => void
-}
+import {onMounted, ref, SetupContext, watchEffect} from "vue";
+import {RadioProps} from "./Radio";
 
 export default {
   name: "Radio",
@@ -32,7 +24,7 @@ export default {
     select: String,
     label: String,
   },
-  setup(props: RadioPreps, context: RadioContext) {
+  setup(props: RadioProps, context: SetupContext) {
     let selectVisible = ref(false)
     let handRadioDiv = ref(null)
     let disabled = ref(false)

@@ -23,20 +23,12 @@
 </template>
 
 <script lang="ts">
-import {computed, onMounted, ref, watchEffect} from "vue";
-
-interface CalendarProps {
-  modelValue: Date
-}
-
-interface CalendarContext {
-  emit: (event: string, ...args: unknown[]) => void
-}
-
+import {computed, onMounted, ref, SetupContext, watchEffect} from "vue";
+import {CalendarProps} from "./Calendar";
 export default {
   name: "Calendar",
   props: {modelValue: Date},
-  setup(props: CalendarProps, context: CalendarContext) {
+  setup(props: CalendarProps, context: SetupContext) {
     let currentDate = ref(props.modelValue)
     let handCalenderDate = ref(null)
 

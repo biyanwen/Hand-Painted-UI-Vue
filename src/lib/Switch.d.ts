@@ -1,9 +1,7 @@
+import {SetupContext} from "vue";
+
 interface SwitchProps {
     onOrOff: Boolean;
-}
-
-interface SwitchContext {
-    emit: (event: string, ...args: unknown[]) => void;
 }
 
 declare const Switch: {
@@ -11,9 +9,9 @@ declare const Switch: {
     props: {
         onOrOff: BooleanConstructor;
     };
-    setup(props: SwitchProps, context: SwitchContext): {
+    setup(props: SwitchProps, context: SetupContext): {
         switchWord: (e: Event) => void;
         switchStatus: (e: Event) => void;
     };
 };
-export default Switch;
+export {Switch, SwitchProps}

@@ -4,11 +4,8 @@ declare module '*.svg' {
 
     export default filePath;
 }
-declare module "*.vue" {
-    import Vue from 'vue'
-    export default Vue
-}
-declare module 'Button.vue' {
-    import Button from "./src/lib/Button";
-    export default Button
+declare module '*.vue' {
+    import { ComponentOptions } from 'vue'
+    const componentOptions: ComponentOptions
+    export default componentOptions
 }
