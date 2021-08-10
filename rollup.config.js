@@ -36,7 +36,11 @@ export default {
             minify: process.env.NODE_ENV === 'production',
             target: 'es2015'
         }),
-        rollupTypescript(),
-        commonjs(),
+        rollupTypescript({
+            include: /\.[jt]s$/,
+        }),
+        commonjs({
+            include: /\.js$/,
+        }),
     ],
 }
