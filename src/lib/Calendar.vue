@@ -23,23 +23,26 @@
 </template>
 
 <script lang="ts">
-import {computed, onMounted, ref, SetupContext, watchEffect} from "vue";
-import {CalendarProps} from "./Calendar";
-export default {
+import {computed, defineComponent, onMounted, ref, reactive, watchEffect, PropType} from "vue";
+
+export default defineComponent({
   name: "Calendar",
-  props: {modelValue: Date},
-  setup(props: CalendarProps, context: SetupContext) {
+  props: {
+    modelValue: {
+      type: Object as PropType<Date>
+    }
+  },
+  setup(props, context) {
     let currentDate = ref(props.modelValue)
-    let handCalenderDate = ref(null)
+    let handCalenderDate = ref(document.createElement('div'))
 
     onMounted(() => {
       watchEffect(() => {
-        let markDate = props.modelValue.getDate()
-        for (let i = 0; i < (handCalenderDate.value as any)?.children.length; i++) {
-          let item = (handCalenderDate.value as any)?.children[i]
-          if (currentDate.value.getMonth() === props.modelValue.getMonth()) {
-            if (item.innerHTML === markDate.toString()) {
-              // console.log(item.classList)
+        let markDate = props.modelValue!.getDate()
+        for (let i = 0; i < ((handCalenderDate as any).value as any)!.children.length; i++) {
+          let item = ((handCalenderDate as any).value as any)!.children[i]
+          if (currentDate.value!.getMonth() === props.modelValue!.getMonth()) {
+            if (item.innerHTML === markDate!.toString()) {
               item.classList.add('hand-calender-select')
             } else {
               item.classList.remove('hand-calender-select')
@@ -52,7 +55,7 @@ export default {
     })
 
     let getPlusMonth = (plus: number) => {
-      let date = currentDate.value
+      let date = currentDate.value || new Date()
       let month = date.getMonth()
       let year = date.getFullYear()
       if (month === 0 && plus === -1) {
@@ -67,14 +70,14 @@ export default {
       currentDate.value = new Date(year, month)
     }
     let getPlusYear = (plus: number) => {
-      let date = currentDate.value
+      let date = currentDate.value || new Date()
       let year = date.getFullYear()
       year += plus
       currentDate.value = new Date(year, date.getMonth())
     }
 
     let getDates = computed(() => {
-      let markDate = currentDate.value
+      let markDate = currentDate.value || new Date()
 
       let getFillInArray = (num: number) => {
         let end: number
@@ -102,7 +105,9 @@ export default {
     })
 
     let changeMarkDate = (e: Event) => {
-      let date = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth(), Number((e.target as any)?.innerHTML))
+      let date = new Date((currentDate!.value || new Date()).getFullYear(),
+          (currentDate!.value || new Date()).getMonth(),
+          Number((e.target as any)!.innerHTML))
       context.emit('update:modelValue', date)
     }
     return {
@@ -114,7 +119,7 @@ export default {
       changeMarkDate
     }
   }
-}
+})
 </script>
 
 <style lang="scss">

@@ -26,37 +26,47 @@
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
-import Close from '../assets/icons/close.svg'
-import {DialogProps} from './Dialog.d.ts'
-import {SetupContext} from "vue";
+// @ts-ignore
+import Button from './Button.vue'
+// @ts-ignore
+import Close from "../assets/icons/close.svg"
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "Dialog",
+  // @ts-ignore
   components: {Button, Close},
   props: {
-    visible: {type: Boolean, default: false},
-    ok: {type: Function},
-    no: {type: Function}
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    ok: {
+      type: Function,
+      require: true
+    },
+    no: {
+      type: Function,
+      require: true
+    }
   },
-  setup(props: DialogProps, context: SetupContext) {
+  setup(props, context) {
     const modifyVisible = () => {
       context.emit('update:visible', !props.visible)
     }
     const doOk = () => {
-      doFunction(props.ok)
-    }
-    const doNo = () => {
-      doFunction(props.no)
-    }
-    const doFunction = (fun: Function) => {
-      if (fun?.() !== false) {
+      if (props.ok && props.ok() !== false) {
         modifyVisible()
       }
     }
-    return {modifyVisible, doOk, doNo, Close}
+
+    const doNo = () => {
+      props.no && props.no()
+      modifyVisible()
+    }
+    return {modifyVisible, Close, doOk, doNo}
   }
-}
+})
 </script>
 
 <style lang="scss">
@@ -83,7 +93,6 @@ export default {
   min-height: 250px;
   z-index: 11;
   position: fixed;
-  left: 50%;
   top: 30%;
 
   > .hand-dialog-title {
@@ -118,6 +127,8 @@ export default {
 
 .hand-dialog-div {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .hand-dialog-button {

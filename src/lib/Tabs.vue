@@ -1,9 +1,9 @@
 <template>
   <div class="hand-tabs-title-father">
     <div class="hand-tabs-title-div">
-      <Button class="hand-tabs-title hand-tabs-title-background " @click="checkTitle"
-              :id="`hand-title-select-${title}`" v-for="title in titles">{{ title }}
-      </Button>
+      <div class="hand-tabs-title hand-tabs-title-background " @click="checkTitle"
+           :id="`hand-title-select-${title}`" v-for="title in titles">{{ title }}
+      </div>
     </div>
     <div class="hand-tabs-title-context ">
       <component :is="getCurrent" :key="getCurrent.props.title"></component>
@@ -12,19 +12,20 @@
 </template>
 
 <script lang="ts">
-import Tab from '../lib/Tab.vue'
+//@ts-ignore
+import Tab from './Tab.vue'
+//@ts-ignore
 import Button from "./Button.vue"
-import {computed, onMounted, SetupContext, watchEffect} from "vue";
-import {TabsProps} from "./Tabs";
+import {computed, defineComponent, onMounted, SetupContext, watchEffect} from "vue";
 
-export default {
+export default defineComponent({
   name: "Tabs",
   components: {Button},
   props: {
     select: String
   },
-  setup(props: TabsProps, context: SetupContext) {
-    const defaults = context.slots.default()
+  setup(props, context) {
+    let defaults = context.slots && context.slots.default!()
     defaults.forEach((tag) => {
       if ((tag as any).type !== Tab) {
         throw new Error('Tabs 子标签必须是 Tab')
@@ -44,23 +45,19 @@ export default {
         let backgroundClass = 'hand-tabs-title-background'
 
         let titleSelectElement = document.getElementById(id)
-        for (let i = 0; i < (titleSelectElement?.parentElement?.children.length as any); i++) {
-          titleSelectElement?.parentElement?.children[i].classList.remove(backgroundClass)
+        for (let i = 0; i < (titleSelectElement!.parentElement!.children!.length as any); i++) {
+          titleSelectElement!.parentElement!.children[i]!.classList.remove(backgroundClass)
         }
-        // for (let child of titleSelectElement?.parentElement.children) {
-        //   child.classList.remove(backgroundClass)
-        // }
-
-        titleSelectElement?.classList.add(backgroundClass)
+        titleSelectElement!.classList!.add(backgroundClass)
       })
     })
 
     const checkTitle = (e: Event) => {
-      context.emit('update:select', (e.target as any)?.innerText)
+      context.emit('update:select', (e.target as any)!.innerText)
     }
     return {getCurrent, defaults, titles, checkTitle}
   }
-}
+})
 </script>
 
 <style lang="scss">
@@ -72,6 +69,7 @@ export default {
     display: flex;
 
     > .hand-tabs-title {
+      cursor: pointer;
       border: none;
       margin-left: 35px;
       font-size: 25px;
@@ -98,6 +96,5 @@ export default {
   linear-gradient(63deg, transparent 74%, #535151 78%),
   linear-gradient(63deg, transparent 34%, #535151 38%, #5c5a5a 58%, transparent 62%),
   #262626;
-  background-size: 16px 16px;
 }
 </style>

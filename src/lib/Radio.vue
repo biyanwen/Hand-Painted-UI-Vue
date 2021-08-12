@@ -13,18 +13,18 @@
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
-import {onMounted, ref, SetupContext, watchEffect} from "vue";
-import {RadioProps} from "./Radio";
+//@ts-ignore
+import Button from './Button.vue'
+import {defineComponent, onMounted, ref, SetupContext, watchEffect} from "vue";
 
-export default {
+export default defineComponent({
   name: "Radio",
   components: {Button},
   props: {
     select: String,
     label: String,
   },
-  setup(props: RadioProps, context: SetupContext) {
+  setup(props, context: SetupContext) {
     let selectVisible = ref(false)
     let handRadioDiv = ref(null)
     let disabled = ref(false)
@@ -38,7 +38,7 @@ export default {
       })
 
       watchEffect(() => {
-        disabled.value = (handRadioDiv.value as any)?.attributes?.disabled !== undefined;
+        disabled.value = (handRadioDiv.value as any).attributes.disabled !== undefined;
       })
     })
 
@@ -52,7 +52,7 @@ export default {
     }
     return {selectVisible, changeSelect, handRadioDiv, disabled}
   }
-}
+})
 </script>
 
 <style lang="scss">
@@ -67,6 +67,7 @@ $height: 25px;
 }
 
 .hand-radio-div {
+  font-family: 'HandPainted', serif;
   padding-right: 10px;
   min-width: 90px;
   display: flex;

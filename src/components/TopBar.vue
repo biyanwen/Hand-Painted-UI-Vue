@@ -9,7 +9,7 @@
 
 <script lang="ts">
 
-import route from "../route/route";
+import route from "../route";
 
 export default {
   name: "TopBar",

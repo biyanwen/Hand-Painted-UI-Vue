@@ -4,9 +4,16 @@ import scss from 'rollup-plugin-scss'
 import dartSass from 'sass';
 import {terser} from "rollup-plugin-terser"
 import image from '@rollup/plugin-image';
-import rollupTypescript from 'rollup-plugin-typescript'
-import commonjs from '@rollup/plugin-commonjs';
+import typescript from 'rollup-plugin-typescript2';
+import path from 'path'
 
+const resolveFile = name => path.resolve(name)
+const extensions = ['.js', '.ts', '.tsx', '.vue']
+
+const tsPlugin = typescript({
+    tsconfig: resolveFile('./tsconfig.json'), // 本地ts配置
+    extensions
+})
 export default {
     input: 'src/lib/index.ts',
     output: [{
@@ -28,6 +35,7 @@ export default {
         image({
             include: /\.svg$/,
         }),
+        tsPlugin,
         vue({
             include: /\.vue$/,
         }),
@@ -35,12 +43,6 @@ export default {
             include: /\.[jt]s$/,
             minify: process.env.NODE_ENV === 'production',
             target: 'es2015'
-        }),
-        rollupTypescript({
-            include: /\.[jt]s$/,
-        }),
-        commonjs({
-            include: /\.js$/,
-        }),
+        })
     ],
 }

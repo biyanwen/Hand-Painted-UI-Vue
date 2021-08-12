@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import route from "../route/route";
+import route from "../route";
 import ToPBar from "../components/TopBar.vue"
 import Button from "../lib/Button.vue";
 

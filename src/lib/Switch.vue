@@ -12,26 +12,44 @@
 </template>
 
 <script lang="ts">
-import {SwitchProps} from './Switch.d.ts'
-import {SetupContext} from "vue";
 
-export default {
+import {defineComponent} from "vue";
+
+interface SwitchEvent {
+  currentTarget: SwitchEventTarget,
+
+  stopPropagation(): void
+
+}
+
+interface SwitchEventTarget {
+  parentElement: HTMLElement,
+  childNodes: NodeListOf<SwitchChildNode>
+}
+
+interface SwitchChildNode extends Node {
+  innerHTML: string
+}
+
+export default defineComponent({
   name: "Switch",
   props: {onOrOff: Boolean},
-  setup(props: SwitchProps, context: SetupContext) {
-    const hasDisabled = (e: Event) => {
-      return (e.currentTarget as any)?.parentElement.parentElement
-          .attributes.getNamedItem("disabled") !== null
+  setup(props, context) {
+    let hasDisabled = (e: SwitchEvent) => {
+      return e.currentTarget && e.currentTarget.parentElement &&
+          e.currentTarget.parentElement.parentElement &&
+          e.currentTarget.parentElement.parentElement
+              .attributes.getNamedItem("disabled") !== null
     }
-    let switchStatus = (e: Event) => {
+    let switchStatus = (e: SwitchEvent) => {
       if (hasDisabled(e)) {
         e.stopPropagation()
         return
       }
       context.emit("update:onOrOff", !props.onOrOff)
     }
-    let switchWord = (e: Event) => {
-      let word = (e.currentTarget as any)?.childNodes[0];
+    let switchWord = (e: SwitchEvent) => {
+      let word = e.currentTarget.childNodes[0];
       if (props.onOrOff) {
         word.innerHTML = 'on'
       } else {
@@ -40,7 +58,7 @@ export default {
     }
     return {switchWord, switchStatus}
   }
-}
+})
 </script>
 
 <style lang="scss">
