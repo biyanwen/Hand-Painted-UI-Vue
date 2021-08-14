@@ -8,14 +8,15 @@
 <script lang="ts">
 import Demo from './Demo.vue'
 import Dialog1Demo from '../components/Dialog1Demo.vue'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "DialogDemo",
   components: {Dialog1Demo, Demo},
   setup() {
     return {Dialog1Demo}
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

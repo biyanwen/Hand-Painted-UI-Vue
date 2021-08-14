@@ -28,9 +28,9 @@ Basic
 <script lang="ts">
 import Dialog from '../lib/Dialog.vue'
 import Button from "../lib/Button.vue";
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "Dialog1Demo",
   components: {Dialog, Button},
   setup() {
@@ -46,7 +46,7 @@ export default {
     }
     return {visible, ok, no, modifyVisible}
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

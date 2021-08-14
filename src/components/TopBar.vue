@@ -10,8 +10,9 @@
 <script lang="ts">
 
 import route from "../route";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "TopBar",
   setup() {
     const toHome = () => {
@@ -19,7 +20,7 @@ export default {
     }
     return {toHome}
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

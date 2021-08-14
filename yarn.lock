@@ -1779,6 +1779,16 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   resolved "https://registry.npm.taobao.org/graceful-fs/download/graceful-fs-4.2.6.tgz?cache=0&sync_timestamp=1612893309139&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fgraceful-fs%2Fdownload%2Fgraceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha1-/wQLKwhTsjw9MQJ1I3BvGIXXa+4=
 
+hand-painted-ui-vue@^0.0.34:
+  version "0.0.34"
+  resolved "https://registry.npmjs.org/hand-painted-ui-vue/-/hand-painted-ui-vue-0.0.34.tgz#ec7df5fb8cd94ce01a89d635323332623114b96f"
+  integrity sha512-RBMkhNl32JZCG9XsdHJfFNDBNNyoge0EdYMyvX4EVqCe0XU/vJVnrdk+6LFpfOwYLF0m+gVBXS9XihZiJI6b9w==
+  dependencies:
+    github-markdown-css "^4.0.0"
+    marked "1.1.1"
+    prismjs "1.21.0"
+    tslib "^2.3.0"
+
 has-bigints@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/has-bigints/download/has-bigints-1.0.1.tgz#64fe6acb020673e3b78db035a5af69aa9d07b113"

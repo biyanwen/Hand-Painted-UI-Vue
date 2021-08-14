@@ -9,14 +9,14 @@ Basic
 
 <script lang="ts">
 import Radio from '../lib/Radio.vue'
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "Radio1Demo",
   components: {Radio},
   setup() {
     const select = ref('2')
     return {select}
   }
-}
+})
 </script>

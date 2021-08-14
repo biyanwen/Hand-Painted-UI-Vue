@@ -7,14 +7,14 @@ Basic
 
 <script lang="ts">
 import Switch from '../lib/Switch.vue'
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "SwitchDemo1",
   components: {Switch},
   setup() {
     const onOrOff = ref(false)
     return {onOrOff}
   }
-}
+})
 </script>

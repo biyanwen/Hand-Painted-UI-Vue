@@ -10,14 +10,15 @@
 import Radio1Demo from '../components/Radio1Demo.vue'
 import Radio2Demo from '../components/Radio2Demo.vue'
 import Demo from './Demo.vue'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "RadioDemo",
   components: {Radio1Demo, Demo, Radio2Demo},
   setup() {
     return {Radio1Demo, Radio2Demo}
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

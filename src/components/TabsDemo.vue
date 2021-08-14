@@ -8,14 +8,15 @@
 <script lang="ts">
 import Demo from './Demo.vue'
 import Tabs1Demo from '../components/Tabs1Demo.vue'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "TabsDemo",
   components: {Demo, Tabs1Demo},
   setup() {
     return {Demo, Tabs1Demo}
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

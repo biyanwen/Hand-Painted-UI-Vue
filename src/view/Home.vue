@@ -179,6 +179,7 @@ export default {
       align-items: center;
 
       > .tsDiv {
+        margin-top: 30px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -196,6 +197,7 @@ export default {
       }
 
       > .versatileDiv {
+        margin-top: 30px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;

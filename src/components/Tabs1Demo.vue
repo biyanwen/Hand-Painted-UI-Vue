@@ -11,14 +11,14 @@ Basic
 <script lang="ts">
 import Tabs from '../lib/Tabs.vue'
 import Tab from '../lib/Tab.vue'
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "Tabs1Demo",
   components: {Tabs, Tab},
   setup() {
     const select = ref("Tab1")
     return {select}
   }
-}
+})
 </script>

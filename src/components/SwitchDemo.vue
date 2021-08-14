@@ -12,9 +12,9 @@ import SwitchDemo2 from '../components/SwitchDemo2.vue'
 import Demo from './Demo.vue'
 
 import Button from "../lib/Button.vue";
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "SwitchDemo",
   components: {Button, SwitchDemo1, SwitchDemo2, Demo},
   setup() {
@@ -29,7 +29,7 @@ export default {
     const codeVisible = ref<Boolean>(false)
     return {SwitchDemo1, SwitchDemo2, showCode2, codeVisible}
   }
-}
+})
 </script>
 
 <style lang="scss">

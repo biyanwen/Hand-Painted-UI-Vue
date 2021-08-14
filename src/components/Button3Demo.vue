@@ -14,11 +14,12 @@ Size
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "Button3Demo",
   components: {Button},
-}
+})
 </script>
 
 <style lang="scss" scoped>

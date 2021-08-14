@@ -18,9 +18,9 @@
 
 <script lang="ts">
 import Button from "../lib/Button.vue";
-import {ref} from "vue";
+import {defineComponent, ref} from "vue";
 
-export default {
+export default defineComponent({
   name: "Demo",
   components: {Button},
   props: ['component'],
@@ -29,7 +29,7 @@ export default {
     const codeVisible = ref<Boolean>(false)
     return {codeVisible}
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

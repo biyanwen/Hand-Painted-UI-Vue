@@ -16,15 +16,16 @@ Type
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "Button1Demo",
   components: {Button},
-}
+})
 </script>
 
 <style lang="scss" scoped>
-.button-type{
+.button-type {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

@@ -17,14 +17,15 @@ import Button2Demo from '../components/Button2Demo.vue'
 import Button3Demo from '../components/Button3Demo.vue'
 import Button4Demo from '../components/Button4Demo.vue'
 import Button5Demo from '../components/Button5Demo.vue'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "ButtonDemo",
   components: {Button, Demo, Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo},
   setup() {
     return {Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo}
   }
-}
+})
 </script>
 
 <style lang="scss">

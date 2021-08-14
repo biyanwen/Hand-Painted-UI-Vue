@@ -8,14 +8,15 @@
 <script lang="ts">
 import Calendar1Demo from "../components/Calendar1Demo.vue";
 import Demo from "../components/Demo.vue"
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "CalendarDemo",
   components: {Calendar1Demo, Demo},
   setup() {
     return {Calendar1Demo}
   }
-}
+})
 </script>
 <style lang="scss" scoped>
 
