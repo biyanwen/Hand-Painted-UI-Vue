@@ -23,6 +23,11 @@ export default defineComponent({
   },
   setup(props, context) {
     let mValue = props.inputValue
+    onMounted(() => {
+      watchEffect(() => {
+        mValue = props.inputValue
+      })
+    })
     const inputRef = ref(document.createElement('input'))
     let updateData = () => {
       context.emit('update:inputValue', inputRef.value.value)

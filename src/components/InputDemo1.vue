@@ -4,7 +4,6 @@ Basic
 <template>
   <Input v-model:inputValue="input" placeholder="Please enter content"></Input>
 </template>
-
 <script lang="ts">
 import {defineComponent, ref} from "vue";
 import Input from "../lib/Input.vue";
