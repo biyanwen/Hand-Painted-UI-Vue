@@ -46,7 +46,7 @@ $border-width: 2px 3px 3px 2px;
   border-width: $border-width;
   border-radius: $border-radius;
   margin: 16px 0 32px;
-  min-width: 32vw;
+  width: 60vw;
 
   > h2 {
     text-align: center;

@@ -125,7 +125,7 @@ export default {
 
   > .getStart {
     top: 312px;
-    left: 750px;
+    left: 850px;
     position: absolute;
   }
 
@@ -139,7 +139,7 @@ export default {
     position: absolute;
     top: 129px;
     font-size: 65px;
-    max-width: 50vw;
+    max-width: 55vw;
     left: 500px;
   }
 
