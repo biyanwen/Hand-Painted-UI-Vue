@@ -1,11 +1,14 @@
 <template>
   <div ref="handInputDiv" class="hand-input-div">
     <div class="hand-input-set-off"></div>
+    <input type='text' style='display:none'>
+    <input type='password' autocomplete='new-password' style='display:none'>
     <input class="hand-input"
            :placeholder='placeholder'
            ref="inputRef"
            @input="updateData"
            type="text"
+           autocomplete="off"
     >
     <div v-show="cleanIconShow" class="hand-input-clean" @click="clearInput">
       <img class="hand-input-clean-icons" :src="Clean" alt="clean">
@@ -15,11 +18,11 @@
 
 <script lang="ts">
 import {computed, defineComponent, onMounted, ref, watchEffect} from "vue";
+//@ts-ignore
 import Clean from '../assets/icons/clean.svg'
 
 export default defineComponent({
   name: "Input",
-  components: {Clean},
   props: {
     inputValue: String,
     placeholder: String,
@@ -37,12 +40,7 @@ export default defineComponent({
     const clearable = () => {
       return handInputDiv.value.attributes.getNamedItem('clearable') !== null
     }
-    let mValue
     onMounted(() => {
-      watchEffect(() => {
-        mValue = props.inputValue
-      })
-
       watchEffect(() => {
         if (disabled()) {
           inputRef.value.disabled = true
@@ -65,7 +63,7 @@ export default defineComponent({
       inputRef.value.value = ''
     }
     return {
-      inputRef, mValue, updateData, handInputDiv,
+      inputRef, updateData, handInputDiv,
       cleanIconShow, Clean, clearInput
     }
   }
