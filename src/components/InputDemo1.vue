@@ -2,7 +2,7 @@
 Basic
 </demo>
 <template>
-  <Input v-model:inputValue="input" placeholder="Please enter content"></Input>
+  <Input v-model:inputValue="input" placeholder="Enter content"></Input>
 </template>
 <script lang="ts">
 import {defineComponent, ref} from "vue";

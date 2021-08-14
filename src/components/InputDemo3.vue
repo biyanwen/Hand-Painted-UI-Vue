@@ -1,8 +1,8 @@
 <demo>
-Disable
+Clearable
 </demo>
 <template>
-  <Input disabled placeholder="Enter content"></Input>
+  <Input clearable placeholder="Enter content"></Input>
 </template>
 
 <script lang="ts">
@@ -10,7 +10,7 @@ import {defineComponent} from "vue";
 import Input from "../lib/Input.vue";
 
 export default defineComponent({
-  name: "InputDemo2",
+  name: "InputDemo3",
   components: {Input}
 })
 </script>
