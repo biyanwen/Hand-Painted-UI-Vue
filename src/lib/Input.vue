@@ -1,5 +1,5 @@
 <template>
-  <div class="hand-input-div">
+  <div ref="handInputDiv" class="hand-input-div">
     <div class="hand-input-set-off"></div>
     <input class="hand-input"
            :placeholder='placeholder'
@@ -22,17 +22,27 @@ export default defineComponent({
     placeholder: String,
   },
   setup(props, context) {
+    const inputRef = ref(document.createElement('input'))
+    const handInputDiv = ref(document.createElement('div'))
+    const disabled = () => {
+      return handInputDiv.value.attributes.getNamedItem('disabled') !== null
+    }
     let mValue = props.inputValue
     onMounted(() => {
       watchEffect(() => {
         mValue = props.inputValue
       })
+
+      watchEffect(() => {
+        if (disabled()) {
+          inputRef.value.disabled = true
+        }
+      })
     })
-    const inputRef = ref(document.createElement('input'))
     let updateData = () => {
       context.emit('update:inputValue', inputRef.value.value)
     }
-    return {inputRef, mValue, updateData}
+    return {inputRef, mValue, updateData, handInputDiv}
   }
 })
 </script>
