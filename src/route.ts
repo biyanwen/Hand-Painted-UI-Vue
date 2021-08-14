@@ -8,6 +8,7 @@ import TabsDemo from './components/TabsDemo.vue'
 import Info from './components/Info.vue'
 import RadioDemo from './components/RadioDemo.vue'
 import CalendarDemo from './components/CalendarDemo.vue'
+import InputDemo from './components/InputDemo.vue'
 
 const history = createWebHashHistory();
 const router = createRouter({
@@ -38,6 +39,9 @@ const router = createRouter({
         }, {
             path: "calendarDemo",
             component: CalendarDemo
+        }, {
+            path: "inputDemo",
+            component: InputDemo
         }]
     }, {
         path: '/:pathMatch(.*)',

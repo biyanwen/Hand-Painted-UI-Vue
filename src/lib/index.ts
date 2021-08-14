@@ -5,3 +5,4 @@ export {default as Radio} from './Radio.vue';
 export {default as Tab} from './Tab.vue';
 export {default as Tabs} from './Tabs.vue';
 export {default as Calendar} from './Calendar.vue';
+export {default as Input} from './Input.vue';

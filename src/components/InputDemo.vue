@@ -1,0 +1,24 @@
+<template>
+  <div class="inputDemo">
+    <h1>Examples</h1>
+    <Demo :component="InputDemo1"></Demo>
+  </div>
+</template>
+
+<script lang="ts">
+import {defineComponent} from "vue";
+import Demo from "../components/Demo.vue"
+import InputDemo1 from '../components/InputDemo1.vue'
+
+export default defineComponent({
+  name: "InputDemo",
+  components: {Demo, InputDemo1},
+  setup() {
+    return {InputDemo1}
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+
+</style>
