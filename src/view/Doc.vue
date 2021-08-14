@@ -7,6 +7,8 @@
     <div class="main">
       <transition name="slide-fade">
         <div class="aside" v-show="asideShow">
+          <div class="asideTitle">Document</div>
+          <router-link class="asideText" to="/doc/info">Info</router-link>
           <div class="asideTitle">Components</div>
           <router-link class="asideText" to="/doc/switchDemo">Switch</router-link>
           <router-link class="asideText" to="/doc/buttonDemo">Button</router-link>
@@ -71,6 +73,7 @@ $text-margin-top: 10px;
   font-size: 30px;
   font-weight: bolder;
   margin-left: $title-margin-left;
+  margin-top: $text-margin-top;
 }
 
 .main {
